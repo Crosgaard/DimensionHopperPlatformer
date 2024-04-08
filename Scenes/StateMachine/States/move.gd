@@ -3,11 +3,16 @@ extends State
 @export var fall_state: State
 @export var idle_state: State
 @export var jump_state: State
+@export var dash_state: State
+
+func process_input(event: InputEvent) -> State:
+	if get_jump() and get_can_jump():
+		return jump_state
+	if get_dash() and can_dash():
+		return dash_state
+	return null
 
 func process_physics(delta: float) -> State:
-	if get_jump() and parent.is_on_floor():
-		return jump_state
-
 	parent.velocity.y += gravity * delta
 
 	var movement = get_movement_input() * move_speed
@@ -15,7 +20,7 @@ func process_physics(delta: float) -> State:
 	if movement == 0:
 		return idle_state
 	
-	animations.flip_h = movement < 0
+	sprite.flip_h = movement < 0
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	

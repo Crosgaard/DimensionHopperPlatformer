@@ -8,6 +8,3 @@ func wants_jump() -> bool:
 
 func wants_dash() -> bool:
 	return Input.is_action_just_pressed('dash')
-
-func wants_dimension_shift() -> bool:
-	return Input.is_action_just_pressed('dimension_shift')

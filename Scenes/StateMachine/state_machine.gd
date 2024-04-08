@@ -3,23 +3,29 @@ extends Node
 @export var starting_state: State
 
 var current_state: State
+var prev_state: State:
+	set(value):
+		prev_state = value
+		current_state.prev_state = value
 
-# Initialize the state machine by giving each child state a reference to the
-# parent object it belongs to and enter the default starting_state.
-func init(parent: CharacterBody2D, animations: AnimatedSprite2D, move_component) -> void:
+func init(parent: CharacterBody2D, animator: AnimationPlayer, sprite: Sprite2D, move_component) -> void:
 	for child in get_children():
 		child.parent = parent
-		child.animations = animations
+		child.animator = animator
+		child.sprite = sprite
 		child.move_component = move_component
 
-	# Initialize to the default state
 	change_state(starting_state)
 
 func change_state(new_state: State) -> void:
+	var this_state: State
 	if current_state:
+		this_state = current_state
 		current_state.exit()
 	
 	current_state = new_state
+	if this_state:
+		prev_state = this_state
 	current_state.enter()
 
 func process_physics(delta: float) -> void:
@@ -36,3 +42,6 @@ func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+
+func on_animation_finished(anim_name: String):
+	current_state.on_animation_finished(anim_name)

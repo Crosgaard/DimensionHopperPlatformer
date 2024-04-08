@@ -3,13 +3,15 @@ extends Node
 
 @export var animation_name: String
 
-@export var move_speed: float = 250.0
+@export var move_speed: float = 450.0
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var animations: AnimationPlayer
+var animator: AnimationPlayer
+var sprite: Sprite2D
 var move_component
 var parent: CharacterBody2D
+var prev_state: State
 
 func enter() -> void:
 	pass
@@ -35,3 +37,20 @@ func get_movement_input() -> float:
 func get_jump() -> bool:
 	return move_component.wants_jump()
 
+func set_jump() -> void:
+	parent.current_jump += 1
+
+func reset_jump() -> void:
+	parent.current_jump = 0
+
+func get_can_jump() -> bool:
+	return parent.current_jump < parent.max_jump
+
+func get_dash() -> bool:
+	return move_component.wants_dash()
+
+func can_dash() -> bool:
+	return parent.has_dashed
+
+func set_has_dashed(value: bool) -> void:
+	parent.has_dashed = value

@@ -14,11 +14,11 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_input(event: InputEvent) -> State:
-	if get_jump() and parent.is_on_floor():
+	if get_jump() and get_can_jump():
 		return jump_state
 	if get_movement_input() != 0.0:
 		return move_state
-	if Input.is_action_just_pressed('dash'):
+	if get_dash() and can_dash():
 		return dash_state
 	return null
 

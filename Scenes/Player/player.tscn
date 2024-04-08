@@ -14,6 +14,7 @@
 size = Vector2(124, 124)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 31
 script = ExtResource("1_j5a8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,22 +25,47 @@ texture = ExtResource("2_dfg3j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="StateMachine" parent="." instance=ExtResource("3_65l6p")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_65l6p")]
+starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "fall_state", "jump_state", "move_state")]
 script = ExtResource("4_h8gdo")
+dash_state = NodePath("../Dash")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Move")
+animation_name = "idle"
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("5_jgaqh")
+fall_state = NodePath("../Fall")
+idle_state = NodePath("../Idle")
+jump_state = NodePath("../Jump")
+animation_name = "move"
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state", "dash_state")]
 script = ExtResource("6_vqbf1")
+fall_state = NodePath("../Fall")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+dash_state = NodePath("../Dash")
+animation_name = "jump"
 
-[node name="Fall" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "dash_state", "jump_state")]
 script = ExtResource("7_i6354")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+dash_state = NodePath("../Dash")
+jump_state = NodePath("../Jump")
+animation_name = "fall"
 
-[node name="Dash" type="Node" parent="StateMachine"]
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state", "idle_state")]
 script = ExtResource("8_cvql2")
+move_state = NodePath("../Move")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+idle_state = NodePath("../Idle")
+animation_name = "dash"
 
 [node name="PlayerMoveComponent" type="Node" parent="."]
 script = ExtResource("4_mbmuw")
