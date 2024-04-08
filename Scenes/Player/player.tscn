@@ -66,6 +66,7 @@ fall_state = NodePath("../Fall")
 jump_state = NodePath("../Jump")
 idle_state = NodePath("../Idle")
 animation_name = "dash"
+accel = 100.0
 
 [node name="PlayerMoveComponent" type="Node" parent="."]
 script = ExtResource("4_mbmuw")

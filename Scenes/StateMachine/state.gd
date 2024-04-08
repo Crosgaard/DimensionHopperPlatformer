@@ -1,9 +1,10 @@
-class_name State
-extends Node
+class_name State extends Node
 
 @export var animation_name: String
 
 @export var move_speed: float = 450.0
+
+@export var accel: float = 10
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -50,7 +51,7 @@ func get_dash() -> bool:
 	return move_component.wants_dash()
 
 func can_dash() -> bool:
-	return parent.has_dashed
+	return not parent.has_dashed
 
 func set_has_dashed(value: bool) -> void:
 	parent.has_dashed = value
