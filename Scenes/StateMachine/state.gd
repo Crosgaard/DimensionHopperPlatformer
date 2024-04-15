@@ -1,22 +1,27 @@
 class_name State extends Node
 
 @export var animation_name: String
+@export_category("Movement")
+@export var max_move_speed: float = 550.0
+@export var accel: float = 20
+@export var standard_floor_friction: float = 3.0
+@export var jump_buffer: float = 0.075
 
-@export var max_move_speed: float = 450.0
-
-@export var accel: float = 10
-@export var floor_friction: float = 3.0
-
+var jump_buffer_timer: float = 0.0
+var bunny_hop: float = 0.03
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var animator: AnimationPlayer
 var sprite: Sprite2D
-var move_component
+var move_component: MoveComponentInterface
 var parent: CharacterBody2D
 var prev_state: State
 
+@onready var floor_friction: float = standard_floor_friction
+
 func enter() -> void:
-	pass
+	if animation_name:
+		animator.play(animation_name)
 
 func exit() -> void:
 	pass

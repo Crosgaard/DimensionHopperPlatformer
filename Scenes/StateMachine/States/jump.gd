@@ -8,6 +8,7 @@ extends State
 @export var jump_force: float = 350.0
 
 func enter() -> void:
+	super()
 	set_jump()
 	parent.velocity.y = -jump_force
 

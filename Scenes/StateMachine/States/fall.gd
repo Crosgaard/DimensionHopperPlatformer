@@ -5,14 +5,13 @@ extends State
 @export var dash_state: State
 @export var jump_state: State
 
-@export var jump_buffer: float = 0.75
-@export var coyote_time: float = 0.75
+@export var coyote_time: float = 0.1
 
 var has_sat_jump: bool = false
-var jump_buffer_timer: float = 0.0
 var coyote_timer: float = 0.0
 
 func enter() -> void:
+	super()
 	jump_buffer_timer = 0.0
 	
 	if prev_state != jump_state:
@@ -52,12 +51,11 @@ func process_physics(delta: float) -> State:
 	if parent.is_on_floor():
 		reset_jump()
 		set_has_dashed(false)
+		# Bunny hop
 		if jump_buffer_timer > 0:
-			if jump_buffer_timer < jump_buffer and jump_buffer_timer > (jump_buffer - 0.05) and get_movement_input() != 0:
+			if jump_buffer_timer < jump_buffer and jump_buffer_timer > (jump_buffer - bunny_hop) and get_movement_input() != 0:
 				parent.velocity.x += max_move_speed / 3 * get_direction()
-				parent.velocity.x = min(max_move_speed * 2, parent.velocity.x)
-				print("bunny")
-				print(parent.velocity.x)
+				parent.velocity.x = min(max_move_speed * 1.5, parent.velocity.x)
 			return jump_state
 		if parent.velocity.x != 0:
 			return move_state
