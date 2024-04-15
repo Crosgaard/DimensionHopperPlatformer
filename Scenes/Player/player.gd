@@ -24,3 +24,6 @@ func _process(delta: float) -> void:
 
 func on_animation_finished(anim_name: String) -> void:
 	state_machine.on_animation_finished(anim_name)
+
+func die() -> void:
+	print("Has died")
