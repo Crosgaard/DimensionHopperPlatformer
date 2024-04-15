@@ -50,6 +50,7 @@ idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 animation_name = "jump"
+accel = 50.0
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "dash_state", "jump_state")]
 script = ExtResource("7_i6354")

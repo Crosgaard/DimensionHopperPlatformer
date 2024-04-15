@@ -2,9 +2,10 @@ class_name State extends Node
 
 @export var animation_name: String
 
-@export var move_speed: float = 450.0
+@export var max_move_speed: float = 450.0
 
 @export var accel: float = 10
+@export var floor_friction: float = 3.0
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -46,6 +47,12 @@ func reset_jump() -> void:
 
 func get_can_jump() -> bool:
 	return parent.current_jump < parent.max_jump
+
+func get_direction() -> float:
+	if sprite.flip_h:
+		return -1
+	else:
+		return 1
 
 func get_dash() -> bool:
 	return move_component.wants_dash()

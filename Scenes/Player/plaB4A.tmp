@@ -66,8 +66,8 @@ fall_state = NodePath("../Fall")
 jump_state = NodePath("../Jump")
 idle_state = NodePath("../Idle")
 animation_name = "dash"
-max_move_speed = 3000.0
-accel = 250.0
+move_speed = 2000.0
+accel = 200.0
 
 [node name="PlayerMoveComponent" type="Node" parent="."]
 script = ExtResource("4_mbmuw")

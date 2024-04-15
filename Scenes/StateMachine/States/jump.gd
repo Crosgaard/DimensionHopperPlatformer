@@ -22,17 +22,24 @@ func process_physics(delta: float) -> State:
 	if parent.velocity.y > 0:
 		return fall_state
 	
-	var movement = get_movement_input() * move_speed
+	var movement_accel: float = get_movement_input() * accel
+	if movement_accel != 0 and abs(parent.velocity.x + movement_accel) < max_move_speed:
+		sprite.flip_h = parent.velocity.x < 0
+		parent.velocity.x += movement_accel
 	
-	if movement != 0:
-		sprite.flip_h = movement < 0
-	parent.velocity.x = movement
+	if get_movement_input() == 0.0 and parent.velocity.x != 0.0:
+		var deccel: float = parent.velocity.x / abs(parent.velocity.x) * accel * -1
+		parent.velocity.x += deccel
+		var tolerance: float = 30
+		if abs(parent.velocity.x) < tolerance:
+			parent.velocity.x = 0.0
+	
 	parent.move_and_slide()
 	
 	if parent.is_on_floor():
 		reset_jump()
 		set_has_dashed(false)
-		if movement != 0:
+		if parent.velocity.x != 0:
 			return move_state
 		return idle_state
 	

@@ -50,6 +50,7 @@ idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 animation_name = "jump"
+accel = 50.0
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "dash_state", "jump_state")]
 script = ExtResource("7_i6354")
@@ -57,7 +58,11 @@ idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 jump_state = NodePath("../Jump")
+jump_buffer = null
+coyote_time = null
 animation_name = "fall"
+max_move_speed = null
+accel = null
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state", "idle_state")]
 script = ExtResource("8_cvql2")
