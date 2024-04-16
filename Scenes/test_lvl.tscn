@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwaa57jucxx0x"]
+[gd_scene load_steps=6 format=3 uid="uid://dwaa57jucxx0x"]
 
 [ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="1_emk58"]
 [ext_resource type="PackedScene" uid="uid://dhg0dxlbdhr00" path="res://Scenes/Player/player.tscn" id="2_pntus"]
+[ext_resource type="PackedScene" uid="uid://dr3ljkrsv2d4r" path="res://Scenes/KillBarrier/kill_barrier.tscn" id="3_to1vj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vesgx"]
 texture = ExtResource("1_emk58")
@@ -281,3 +282,9 @@ zoom = Vector2(0.6, 0.6)
 [node name="Player" parent="." instance=ExtResource("2_pntus")]
 position = Vector2(0, -91)
 scale = Vector2(0.5, 0.5)
+
+[node name="KillBarrier" parent="." instance=ExtResource("3_to1vj")]
+position = Vector2(0, -89)
+start_point = Vector2(-3272, -89)
+end_point = Vector2(0, -89)
+time = 100.0

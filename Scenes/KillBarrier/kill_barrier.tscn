@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr3ljkrsv2d4r"]
+[gd_scene load_steps=4 format=3 uid="uid://dr3ljkrsv2d4r"]
 
 [ext_resource type="Script" path="res://Scenes/KillBarrier/kill_barrier.gd" id="1_q2cuw"]
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="2_h2i38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_falqp"]
+size = Vector2(3264, 1836)
 
 [node name="KillBarrier" type="Area2D"]
 script = ExtResource("1_q2cuw")
-time = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(25.5, 14.3125)
+texture = ExtResource("2_h2i38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_falqp")
 
-[node name="Node" type="Node" parent="."]
-
-[node name="StartPoint" type="Marker2D" parent="Node"]
-unique_name_in_owner = true
-
-[node name="EndPoint" type="Marker2D" parent="Node"]
-unique_name_in_owner = true
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

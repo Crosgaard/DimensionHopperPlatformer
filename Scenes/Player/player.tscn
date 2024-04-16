@@ -13,14 +13,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw1i6"]
 size = Vector2(124, 124)
 
-[sub_resource type="Animation" id="Animation_3dqfi"]
-resource_name = "fall"
-
-[sub_resource type="Animation" id="Animation_nw8by"]
-resource_name = "move"
-
 [sub_resource type="Animation" id="Animation_hnkh5"]
 resource_name = "dash"
+
+[sub_resource type="Animation" id="Animation_3dqfi"]
+resource_name = "fall"
 
 [sub_resource type="Animation" id="Animation_flgi3"]
 resource_name = "idle"
@@ -30,6 +27,9 @@ resource_name = "jump"
 
 [sub_resource type="Animation" id="Animation_5pbyk"]
 resource_name = "jumping"
+
+[sub_resource type="Animation" id="Animation_nw8by"]
+resource_name = "move"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvkxn"]
 _data = {
