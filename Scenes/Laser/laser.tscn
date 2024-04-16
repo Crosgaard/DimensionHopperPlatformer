@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckjsn218md0c4"]
+
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="1_ctan4"]
+[ext_resource type="Script" path="res://Scenes/Laser/laser.gd" id="1_wjptv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulfky"]
+size = Vector2(372, 22)
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_wjptv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ulfky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(3.8147e-06, -1.90735e-06)
+scale = Vector2(2.88372, 0.171875)
+texture = ExtResource("1_ctan4")
+region_enabled = true
+region_rect = Rect2(-0.144379, -0.401688, 129.316, 128.29)
+region_filter_clip_enabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
