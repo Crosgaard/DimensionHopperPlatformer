@@ -1,4 +1,4 @@
-extends Area2D
+class_name KillBarrier extends Area2D
 
 @export var start_point: Vector2
 @export var end_point: Vector2

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpbkila1t47nb"]
+
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="1_66s8g"]
+[ext_resource type="Script" path="res://Scenes/collectible.gd" id="1_vht7w"]
+[ext_resource type="Texture2D" uid="uid://q50qijo76kmm" path="res://Graphics/Light/light.png" id="3_45gpy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qym2"]
+size = Vector2(32, 32)
+
+[node name="Collectible" type="Area2D"]
+script = ExtResource("1_vht7w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("3_45gpy")
+texture_scale = 0.15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_66s8g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5qym2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

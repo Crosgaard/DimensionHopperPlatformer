@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 var max_jump: int = 1
 var current_jump: int = 0
 var has_dashed: bool = false
+var collected_counter: int = 0
 
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
@@ -27,3 +28,11 @@ func on_animation_finished(anim_name: String) -> void:
 
 func die() -> void:
 	print("Has died")
+	reset_collected()
+
+func collected() -> void:
+	print("Has collected")
+	collected_counter += 1
+
+func reset_collected() -> void:
+	collected_counter = 0
