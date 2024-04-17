@@ -1,4 +1,4 @@
-class_name KillBarrier extends Area2D
+class_name KillBarrier extends KillArea
 
 @export var start_point: Vector2
 @export var end_point: Vector2
@@ -10,5 +10,4 @@ func _ready():
 	tween.tween_property(self, "position", end_point, time)
 
 func _on_body_entered(body):
-	if body is Player:
-		body.die()
+	super(body)
