@@ -335,7 +335,7 @@ texture = ExtResource("2_3sfnk")
 [sub_resource type="TileSet" id="TileSet_lhc7n"]
 resource_local_to_scene = true
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 2
+physics_layer_0/collision_layer = 66
 physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_vesgx")
 
@@ -600,7 +600,7 @@ texture = ExtResource("2_3sfnk")
 [sub_resource type="TileSet" id="TileSet_m188q"]
 resource_local_to_scene = true
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 2
+physics_layer_0/collision_layer = 66
 physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_mnbq2")
 
@@ -629,6 +629,8 @@ layer_0/tile_data = PackedInt32Array(393187, 0, 0, 458723, 0, 1, 524259, 0, 2, 5
 
 [node name="Player" parent="." instance=ExtResource("3_w7gn8")]
 position = Vector2(2.08165e-12, -300)
+collision_layer = 64
+collision_mask = 63
 
 [node name="KillBarrier" parent="." instance=ExtResource("4_xwfd4")]
 position = Vector2(-3000, 2.08165e-12)
