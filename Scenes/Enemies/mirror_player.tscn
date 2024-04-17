@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://7h4xdg26grm2"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/mirror_player.gd" id="1_1jnni"]
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="2_4v4ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wt8u"]
+size = Vector2(126, 128)
+
+[node name="MirrorPlayer" type="CharacterBody2D"]
+script = ExtResource("1_1jnni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4v4ar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0wt8u")
