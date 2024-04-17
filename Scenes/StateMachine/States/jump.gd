@@ -31,7 +31,6 @@ func process_physics(delta: float) -> State:
 	if get_movement_input() == 0.0 and parent.velocity.x != 0.0:
 		var deccel: float = parent.velocity.x / abs(parent.velocity.x) * accel * -1
 		parent.velocity.x += deccel
-		var tolerance: float = 30
 		if abs(parent.velocity.x) < tolerance:
 			parent.velocity.x = 0.0
 	

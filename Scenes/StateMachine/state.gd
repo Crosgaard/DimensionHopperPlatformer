@@ -10,6 +10,7 @@ class_name State extends Node
 var jump_buffer_timer: float = 0.0
 var bunny_hop: float = 0.03
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var tolerance: float = 30
 
 var animator: AnimationPlayer
 var sprite: Sprite2D

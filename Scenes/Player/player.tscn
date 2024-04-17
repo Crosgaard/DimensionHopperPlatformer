@@ -80,7 +80,12 @@ fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
+jump_force = null
 animation_name = "jump"
+max_move_speed = null
+accel = null
+standard_floor_friction = null
+jump_buffer = null
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "dash_state", "jump_state")]
 script = ExtResource("7_i6354")
@@ -88,7 +93,12 @@ idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 jump_state = NodePath("../Jump")
+coyote_time = null
 animation_name = "fall"
+max_move_speed = null
+accel = null
+standard_floor_friction = null
+jump_buffer = null
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state", "idle_state")]
 script = ExtResource("8_cvql2")
@@ -102,3 +112,11 @@ accel = 250.0
 
 [node name="PlayerMoveComponent" type="Node" parent="."]
 script = ExtResource("4_mbmuw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+metadata/_edit_lock_ = true
