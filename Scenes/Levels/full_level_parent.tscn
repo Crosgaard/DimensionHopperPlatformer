@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2ga6ka57b8hf"]
+[gd_scene load_steps=6 format=3 uid="uid://b2ga6ka57b8hf"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/full_level_parent.gd" id="1_gp7kt"]
 [ext_resource type="PackedScene" uid="uid://cxcbllnjvnh5j" path="res://Scenes/Levels/level_parent.tscn" id="1_mevt1"]
 [ext_resource type="PackedScene" uid="uid://dhg0dxlbdhr00" path="res://Scenes/Player/player.tscn" id="3_w7gn8"]
 [ext_resource type="PackedScene" uid="uid://dr3ljkrsv2d4r" path="res://Scenes/KillBarrier/kill_barrier.tscn" id="4_xwfd4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s7ls"]
+size = Vector2(11029, 172.5)
 
 [node name="FullLevelParent" type="Node2D"]
 script = ExtResource("1_gp7kt")
@@ -32,6 +35,16 @@ position = Vector2(-3000, 2.08165e-12)
 start_point = Vector2(-3000, 2.08165e-12)
 end_point = Vector2(1000, 2.08165e-12)
 time = 60.0
+
+[node name="LowerKillBarrier" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerKillBarrier"]
+position = Vector2(4041, 813)
+shape = SubResource("RectangleShape2D_2s7ls")
+
+[connection signal="body_entered" from="LowerKillBarrier" to="." method="_on_lower_kill_barrier_body_entered"]
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]

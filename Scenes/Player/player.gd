@@ -30,12 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	
-	# Camera offset
-	camera.position.x = position.x
-	if sprite.flip_h:
-		camera.position.x -= camera_offset
-	else:
-		camera.position.x += camera_offset
+	set_camera_position()
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -49,8 +44,11 @@ func changed_dimension() -> void:
 	print(current_animator)
 
 func die() -> void:
-	print("Has died")
 	reset_collected()
+	velocity = Vector2.ZERO
+	position = start_pos
+	sprite.flip_h = false
+	set_camera_position()
 
 func collected() -> void:
 	print("Has collected")
@@ -58,3 +56,10 @@ func collected() -> void:
 
 func reset_collected() -> void:
 	collected_counter = 0
+
+func set_camera_position():
+	camera.position.x = position.x
+	if sprite.flip_h:
+		camera.position.x -= camera_offset
+	else:
+		camera.position.x += camera_offset

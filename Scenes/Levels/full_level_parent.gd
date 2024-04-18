@@ -28,3 +28,7 @@ func change_dimension(new_dimension: LevelParent) -> void:
 
 func get_player() -> Player:
 	return player
+
+func _on_lower_kill_barrier_body_entered(body: CharacterBody2D) -> void:
+	if body is Player:
+		body.die()
