@@ -7,7 +7,7 @@ var current_jump: int = 0
 var has_dashed: bool = false
 var collected_counter: int = 0
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var animator: AnimationPlayer = $AnimationPlayerD1
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: Node = $StateMachine
 @onready var player_move_component = $PlayerMoveComponent
