@@ -24,3 +24,6 @@ func change_dimension(new_dimension: LevelParent) -> void:
 	current_dimension.exit_dimension()
 	current_dimension = new_dimension
 	current_dimension.enter_dimension()
+
+func get_player() -> Player:
+	return player
