@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DimensionHopperProject"
-run/main_scene="res://Scenes/Levels/full_level_parent.tscn"
+run/main_scene="res://Scenes/Levels/full_test_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

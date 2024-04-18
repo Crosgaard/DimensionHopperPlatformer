@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://buseseky7u2qg"]
+
+[ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_jmotd"]
+[ext_resource type="PackedScene" uid="uid://r1wlgptki87q" path="res://Scenes/Enemies/drone.tscn" id="2_7qgk1"]
+
+[sub_resource type="TileSet" id="TileSet_b2xjh"]
+resource_local_to_scene = true
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+
+[sub_resource type="TileSet" id="TileSet_h6nbh"]
+resource_local_to_scene = true
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+
+[node name="FullTestLevel" instance=ExtResource("1_jmotd")]
+
+[node name="TileMap" parent="Dimension1" index="1"]
+tile_set = SubResource("TileSet_b2xjh")
+
+[node name="Drone" parent="Dimension1/SingleDimensionEnemies" index="0" instance=ExtResource("2_7qgk1")]
+position = Vector2(1000, -900)
+
+[node name="TileMap" parent="Dimension2" index="1"]
+tile_set = SubResource("TileSet_h6nbh")
+
+[node name="Player" parent="." index="5"]
+position = Vector2(5, -118)
+
+[editable path="Dimension1"]
+[editable path="Dimension2"]
