@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Camera offset
 	camera.position.x = position.x
-	print(velocity.x)
 	if velocity.x > 1:
 		camera.position.x += camera_offset
 	elif velocity.x < -1:

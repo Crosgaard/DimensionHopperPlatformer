@@ -126,5 +126,5 @@ top_level = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
+position_smoothing_speed = 4.0
 metadata/_edit_lock_ = true
