@@ -7,10 +7,23 @@ signal changedDimension
 @onready var dimensions = [dimension_1, dimension_2]
 @onready var player: Player = $Player
 
+@onready var dimension_1: LevelParent = $Dimension1
+@onready var dimension_2: LevelParent = $Dimension2
+@onready var current_dimension: LevelParent = dimension_1
+
+func _ready():
+	dimension_1.enter_dimension()
+	dimension_2.exit_dimension()
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("dimension_shift"):
-		$Dimension1.tileMap.tile_set.set_physics_layer_collision_layer(0,1)
-		print($Dimension1.tileMap.tile_set.get_physics_layer_collision_layer(0))
+		match current_dimension:
+			dimension_1:
+				change_dimension(dimension_2)
+			dimension_2:
+				change_dimension(dimension_1)
 
-func get_player() -> Player:
-	return self.player
+func change_dimension(new_dimension: LevelParent) -> void:
+	current_dimension.exit_dimension()
+	current_dimension = new_dimension
+	current_dimension.enter_dimension()

@@ -13,6 +13,7 @@ var collected_counter: int = 0
 @onready var player_move_component = $PlayerMoveComponent
 
 @onready var camera: Camera2D = $Camera2D
+@onready var start_pos: Vector2 = position
 
 func _ready() -> void:
 	animator.connect("animation_finished", on_animation_finished)
@@ -26,7 +27,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Camera offset
 	camera.position.x = position.x
-	print(velocity.x)
 	if velocity.x > 1:
 		camera.position.x += camera_offset
 	elif velocity.x < -1:
