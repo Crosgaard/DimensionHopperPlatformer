@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0mmgdwuo1vm0"]
+
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="1_73n57"]
+[ext_resource type="Script" path="res://Scenes/Enemies/entity.gd" id="1_ke5hf"]
+[ext_resource type="PackedScene" uid="uid://d0y1gxmcj0n16" path="res://Scenes/StateMachine/state_machine.tscn" id="2_ml0p0"]
+[ext_resource type="Script" path="res://Scenes/StateMachine/States/out_of_dimension.gd" id="4_4eo3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgot5"]
+size = Vector2(128, 128)
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_ke5hf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_73n57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hgot5")
+
+[node name="StateMachine" parent="." instance=ExtResource("2_ml0p0")]
+
+[node name="OutOfDimension" type="Node" parent="StateMachine"]
+script = ExtResource("4_4eo3u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

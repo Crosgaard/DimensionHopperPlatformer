@@ -3,6 +3,7 @@ extends State
 @export var idle_state: State
 @export var target_state: State
 @export var shoot_state: State
+@export var out_of_dimension_state: State
 
 func enter() -> void:
 	pass
