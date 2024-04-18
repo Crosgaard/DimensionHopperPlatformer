@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/StateMachine/States/dash_player.gd" id="8_cvql2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw1i6"]
-size = Vector2(124, 181)
+size = Vector2(104, 5)
 
 [sub_resource type="Animation" id="Animation_hnkh5"]
 resource_name = "dash"
@@ -234,7 +234,7 @@ collision_mask = 31
 script = ExtResource("1_j5a8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 85.5)
 shape = SubResource("RectangleShape2D_fw1i6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

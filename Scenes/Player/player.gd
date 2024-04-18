@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var camera_offset: float = 1000.0
+@export var camera_offset: float = 850.0
 
 var max_jump: int = 1
 var current_jump: int = 0
@@ -27,10 +27,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Camera offset
 	camera.position.x = position.x
-	if velocity.x > 1:
-		camera.position.x += camera_offset
-	elif velocity.x < -1:
+	if sprite.flip_h:
 		camera.position.x -= camera_offset
+	else:
+		camera.position.x += camera_offset
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
