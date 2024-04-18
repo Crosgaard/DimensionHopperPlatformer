@@ -1494,8 +1494,6 @@ script = ExtResource("1_j3l5c")
 
 [node name="BackGround" type="Node2D" parent="."]
 
-[node name="BG" type="Sprite2D" parent="BackGround"]
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackGround"]
 unique_name_in_owner = true
 
