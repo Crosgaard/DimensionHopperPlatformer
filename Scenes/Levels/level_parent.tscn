@@ -1496,6 +1496,9 @@ script = ExtResource("1_j3l5c")
 
 [node name="BG" type="Sprite2D" parent="BackGround"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackGround"]
+unique_name_in_owner = true
+
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_yb5f5")
