@@ -6,9 +6,6 @@ signal changedDimension
 @onready var dimension_2: LevelParent = $Dimension2
 @onready var dimensions = [dimension_1, dimension_2]
 @onready var player: Player = $Player
-
-@onready var dimension_1: LevelParent = $Dimension1
-@onready var dimension_2: LevelParent = $Dimension2
 @onready var current_dimension: LevelParent = dimension_1
 
 func _ready():
