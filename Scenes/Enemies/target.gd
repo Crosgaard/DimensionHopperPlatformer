@@ -1,7 +1,7 @@
 extends State
 
+@export var idle_state: State
 @export var return_state: State
-@export var target_state: State
 @export var shoot_state: State
 
 func enter() -> void:

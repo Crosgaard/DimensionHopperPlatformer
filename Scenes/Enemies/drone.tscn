@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://6l5pl1gask1r"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/drone.gd" id="1_7sxbp"]
+[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="1_wbqi3"]
+[ext_resource type="PackedScene" uid="uid://d0y1gxmcj0n16" path="res://Scenes/StateMachine/state_machine.tscn" id="3_lcxjt"]
+[ext_resource type="Script" path="res://Scenes/StateMachine/States/idle.gd" id="4_0ll88"]
+[ext_resource type="Script" path="res://Scenes/Enemies/ImmobileMoveComponent.gd" id="4_jrugq"]
+[ext_resource type="Script" path="res://Scenes/StateMachine/States/return.gd" id="5_ab2a6"]
+[ext_resource type="Script" path="res://Scenes/Enemies/target.gd" id="6_otsdi"]
+[ext_resource type="Script" path="res://Scenes/Enemies/shoot.gd" id="7_irujs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii5p6"]
+size = Vector2(128, 128)
+
+[node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_7sxbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_wbqi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ii5p6")
+
+[node name="StateMachine" parent="." instance=ExtResource("3_lcxjt")]
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("return_state", "target_state", "shoot_state")]
+script = ExtResource("4_0ll88")
+return_state = NodePath("../Return")
+target_state = NodePath("../Target")
+shoot_state = NodePath("../Shoot")
+
+[node name="Return" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "target_state", "shoot_state")]
+script = ExtResource("5_ab2a6")
+idle_state = NodePath("../Idle")
+target_state = NodePath("../Target")
+shoot_state = NodePath("../Shoot")
+
+[node name="Target" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "return_state", "shoot_state")]
+script = ExtResource("6_otsdi")
+idle_state = NodePath("../Idle")
+return_state = NodePath("../Return")
+shoot_state = NodePath("../Shoot")
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "return_state", "target_state")]
+script = ExtResource("7_irujs")
+idle_state = NodePath("../Idle")
+return_state = NodePath("../Return")
+target_state = NodePath("../Target")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ImmobileMoveComponent" type="Node" parent="."]
+script = ExtResource("4_jrugq")
