@@ -19,7 +19,7 @@ func process_physics(delta: float) -> State:
 	var query = PhysicsRayQueryParameters2D.create(parent.position, player.position)
 	var result = space_state.intersect_ray(query)
 	
-	if not result.collider: 
+	if result == {}: 
 		return null
 		
 	if result.collider != parent.full_level_parent.get_player():
