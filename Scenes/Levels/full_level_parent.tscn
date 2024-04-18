@@ -20,11 +20,12 @@ script = ExtResource("1_gp7kt")
 
 [node name="FullEnemies" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_w7gn8")]
+[node name="Player" parent="." node_paths=PackedStringArray("full_level_parent") instance=ExtResource("3_w7gn8")]
 position = Vector2(2.08165e-12, -300)
 scale = Vector2(0.5, 0.5)
 collision_layer = 64
 collision_mask = 63
+full_level_parent = NodePath("..")
 
 [node name="KillBarrier" parent="." instance=ExtResource("4_xwfd4")]
 position = Vector2(-3000, 2.08165e-12)

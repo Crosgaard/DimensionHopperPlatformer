@@ -50,3 +50,15 @@ func toggle_dimension():
 	var new_state = current_state.toggle_dimension()
 	if new_state:
 		change_state(new_state)
+
+func set_animator(animator: AnimationPlayer) -> void:
+	for child in get_children():
+		if child.animator.is_playing():
+			var animation_pos: float = child.animator.current_animation_position
+			var animation_name: String = child.animator.current_animation
+			child.animator.stop()
+			child.animator = animator
+			child.animator.play(animation_name)
+			child.animator.seek(animation_pos,true)
+		else:
+			child.animator = animator

@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 				change_dimension(dimension_1)
 
 func change_dimension(new_dimension: LevelParent) -> void:
+	changedDimension.emit()
 	current_dimension.exit_dimension()
 	current_dimension = new_dimension
 	current_dimension.enter_dimension()
