@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="DimensionHopperProject"
+<<<<<<< HEAD
 run/main_scene="res://Scenes/Levels/full_level_parent.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+=======
+run/main_scene="res://Scenes/test_lvl.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+>>>>>>> parent of adbcc30 (#2)
 config/icon="res://icon.svg"
 
 [display]
