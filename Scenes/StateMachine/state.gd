@@ -27,6 +27,9 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
+func toggle_dimension() -> State:
+	return null
+
 func process_input(event: InputEvent) -> State:
 	return null
 

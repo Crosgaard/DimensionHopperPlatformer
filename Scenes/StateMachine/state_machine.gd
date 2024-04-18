@@ -45,3 +45,8 @@ func process_frame(delta: float) -> void:
 
 func on_animation_finished(anim_name: String):
 	current_state.on_animation_finished(anim_name)
+
+func toggle_dimension():
+	var new_state = current_state.toggle_dimension()
+	if new_state:
+		change_state(new_state)
