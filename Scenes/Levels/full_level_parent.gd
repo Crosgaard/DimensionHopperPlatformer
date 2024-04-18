@@ -4,6 +4,10 @@ extends Node2D
 @onready var dimension_2: LevelParent = $Dimension2
 @onready var current_dimension: LevelParent = dimension_1
 
+func _ready():
+	dimension_1.enter_dimension()
+	dimension_2.exit_dimension()
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("dimension_shift"):
 		match current_dimension:
