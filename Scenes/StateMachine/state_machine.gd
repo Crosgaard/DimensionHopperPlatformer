@@ -14,7 +14,7 @@ func init(parent: CharacterBody2D, animator: AnimationPlayer, sprite: Sprite2D, 
 		child.animator = animator
 		child.sprite = sprite
 		child.move_component = move_component
-
+	
 	change_state(starting_state)
 
 func change_state(new_state: State) -> void:

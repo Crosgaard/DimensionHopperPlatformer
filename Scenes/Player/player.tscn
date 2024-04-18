@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dhg0dxlbdhr00"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_j5a8v"]
-[ext_resource type="Texture2D" uid="uid://c7pes4cxofpbq" path="res://icon.svg" id="2_dfg3j"]
+[ext_resource type="Texture2D" uid="uid://dihj05ngctmvm" path="res://Graphics/Player/hooded figure spritesheet.png" id="2_kcstr"]
 [ext_resource type="PackedScene" uid="uid://d0y1gxmcj0n16" path="res://Scenes/StateMachine/state_machine.tscn" id="3_65l6p"]
 [ext_resource type="Script" path="res://Scenes/StateMachine/States/idle_player.gd" id="4_kerx0"]
 [ext_resource type="Script" path="res://Scenes/Player/player_move_component.gd" id="4_mbmuw"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/StateMachine/States/dash_player.gd" id="8_6scw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw1i6"]
-size = Vector2(124, 124)
+size = Vector2(124, 181)
 
 [sub_resource type="Animation" id="Animation_hnkh5"]
 resource_name = "dash"
@@ -46,12 +46,20 @@ collision_mask = 31
 script = ExtResource("1_j5a8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_fw1i6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dfg3j")
+scale = Vector2(11, 11)
+texture = ExtResource("2_kcstr")
+hframes = 68
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayerD1" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uvkxn")
+}
+
+[node name="AnimationPlayerD2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uvkxn")
 }
@@ -80,7 +88,12 @@ fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
+jump_force = null
 animation_name = "jump"
+max_move_speed = null
+accel = null
+standard_floor_friction = null
+jump_buffer = null
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "dash_state", "jump_state")]
 script = ExtResource("7_obu1m")
@@ -88,7 +101,12 @@ idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 jump_state = NodePath("../Jump")
+coyote_time = null
 animation_name = "fall"
+max_move_speed = null
+accel = null
+standard_floor_friction = null
+jump_buffer = null
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state", "idle_state")]
 script = ExtResource("8_6scw5")
@@ -102,3 +120,11 @@ accel = 250.0
 
 [node name="PlayerMoveComponent" type="Node" parent="."]
 script = ExtResource("4_mbmuw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+metadata/_edit_lock_ = true

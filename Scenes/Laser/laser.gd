@@ -1,5 +1,4 @@
-extends Area2D
+extends KillArea
 
 func _on_body_entered(body):
-	if body is Player:
-		body.die()
+	super(body)
