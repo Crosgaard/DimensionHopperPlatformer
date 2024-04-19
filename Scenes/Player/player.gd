@@ -25,7 +25,10 @@ func _ready() -> void:
 	state_machine.init(self, current_animator, sprite, player_move_component)
 
 func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+	if not Input.is_action_just_pressed("respawn"):
+		state_machine.process_input(event)
+	else:
+		die()
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -41,7 +44,6 @@ func on_animation_finished(anim_name: String) -> void:
 func changed_dimension() -> void:
 	current_animator = animator_d1 if current_animator == animator_d2 else animator_d2
 	state_machine.set_animator(current_animator)
-	print(current_animator)
 
 func die() -> void:
 	reset_collected()

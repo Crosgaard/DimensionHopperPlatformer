@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://buseseky7u2qg"]
+[gd_scene load_steps=14 format=3 uid="uid://buseseky7u2qg"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_jmotd"]
 [ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_22s35"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwxi7ip0qrvru" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/rocks.png" id="7_6dnnh"]
 [ext_resource type="Texture2D" uid="uid://dayfyid0e7yqs" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/clouds_1.png" id="7_nira4"]
 [ext_resource type="Texture2D" uid="uid://uluviou5gsfx" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/clouds_2.png" id="8_5lw5f"]
+[ext_resource type="Script" path="res://Scenes/Background/cloud.gd" id="8_din5l"]
 [ext_resource type="Texture2D" uid="uid://v87w6nd6pt4q" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_3.png" id="8_vpws2"]
 [ext_resource type="Texture2D" uid="uid://cpqoeu2sthv1j" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_2.png" id="9_qt8en"]
 [ext_resource type="Texture2D" uid="uid://b8f3q0ip0226r" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_1.png" id="10_hqlf7"]
@@ -33,6 +34,8 @@ region_rect = Rect2(0, 0, 5760, 1080)
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Dimension1/BackGround/ParallaxBackground" index="1"]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(3840, 0)
+script = ExtResource("8_din5l")
+cloud_speed = -45.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Dimension1/BackGround/ParallaxBackground/ParallaxLayer2" index="0"]
 texture_repeat = 2
@@ -65,7 +68,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5760, 1080)
 
 [node name="TileMap" parent="Dimension1" index="1"]
-layer_0/tile_data = PackedInt32Array(655347, 851968, 5, 655348, 851968, 5, 655349, 851968, 5, 589868, 851968, 5, 589869, 851968, 5, 589870, 851968, 5, 589871, 851968, 5, 589872, 851968, 5, 589873, 851968, 5, 589846, 851968, 5, 589847, 851968, 5, 589867, 851968, 5, 589866, 851968, 5, 589874, 851968, 5, 589875, 851968, 5, 589876, 851968, 5)
+layer_0/tile_data = PackedInt32Array(655347, 851968, 5, 655348, 851968, 5, 655349, 851968, 5, 589868, 851968, 5, 589869, 851968, 5, 589870, 851968, 5, 589871, 851968, 5, 589872, 851968, 5, 589873, 851968, 5, 589846, 851968, 5, 589847, 851968, 5, 589867, 851968, 5, 589866, 851968, 5, 589874, 851968, 5, 589875, 851968, 5, 589876, 851968, 5, 852044, 851968, 5, 720980, 851968, 5)
 
 [node name="ParallaxBackground" parent="Dimension2/BackGround" index="0"]
 offset = Vector2(0, 300)
@@ -85,6 +88,8 @@ region_rect = Rect2(0, 0, 5760, 1080)
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="1"]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(3840, 0)
+script = ExtResource("8_din5l")
+cloud_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer6" index="0"]
 texture_repeat = 2
@@ -96,6 +101,8 @@ region_rect = Rect2(0, 0, 5760, 1080)
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="2"]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(3840, 0)
+script = ExtResource("8_din5l")
+cloud_speed = 35.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer7" index="0"]
 texture_repeat = 2
@@ -105,7 +112,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5760, 1080)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="3"]
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.05, 0.05)
 motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer2" index="0"]
@@ -116,7 +123,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5760, 1080)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="4"]
-motion_scale = Vector2(0.1, 0.1)
+motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer3" index="0"]
@@ -151,14 +158,16 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5760, 1080)
 
 [node name="TileMap" parent="Dimension2" index="1"]
-layer_0/tile_data = PackedInt32Array(983027, 851969, 5, 983028, 851969, 5, 983029, 851969, 5, 917533, 851969, 5, 917552, 851969, 5, 917553, 851969, 5, 917554, 851969, 5, 917555, 851969, 5, 917556, 851969, 5, 917557, 851969, 5, 917558, 851969, 5, 917559, 851969, 5, 917560, 851969, 5, 983030, 851969, 5, 917534, 851969, 5, 917561, 851969, 5, 917562, 851969, 5, 917563, 851969, 5, 917564, 851969, 5, 917565, 851969, 5, 917566, 851969, 5, 917535, 851969, 5, 917567, 851969, 5, 917568, 851969, 5, 917569, 851969, 5, 917570, 851969, 5, 917571, 851969, 5, 917572, 851969, 5, 917573, 851969, 5, 917574, 851969, 5, 917575, 851969, 5, 917576, 851969, 5)
+layer_0/tile_data = PackedInt32Array(983027, 851969, 5, 983028, 851969, 5, 983029, 851969, 5, 917533, 851969, 5, 917552, 851969, 5, 917553, 851969, 5, 917554, 851969, 5, 917555, 851969, 5, 917556, 851969, 5, 917557, 851969, 5, 917558, 851969, 5, 917559, 851969, 5, 917560, 851969, 5, 983030, 851969, 5, 917534, 851969, 5, 917561, 851969, 5, 917562, 851969, 5, 917563, 851969, 5, 917564, 851969, 5, 917565, 851969, 5, 917566, 851969, 5, 917535, 851969, 5, 917567, 851969, 5, 917568, 851969, 5, 917569, 851969, 5, 917570, 851969, 5, 917571, 851969, 5, 917572, 851969, 5, 917573, 851969, 5, 917574, 851969, 5, 917575, 851969, 5, 917576, 851969, 5, 786512, 851969, 5, 655448, 851969, 5, 655449, 851969, 5, 655450, 851969, 5, 655479, 851969, 5, 655480, 851969, 5, 655481, 851969, 5, 655482, 851969, 5)
 
 [node name="Player" parent="." index="5"]
-position = Vector2(-559, 356)
+position = Vector2(-556, 316)
 collision_layer = 1
 
 [node name="KillBarrier" parent="." index="6"]
-end_point = Vector2(-4000, 0)
+position = Vector2(-12000, 2.08165e-12)
+start_point = Vector2(-12000, 2.08165e-12)
+end_point = Vector2(-10000, 2.08165e-12)
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]
