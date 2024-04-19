@@ -14,7 +14,7 @@ func enter() -> void:
 	# Camera shake
 	if not parent.get_is_camera_shaking() and abs(parent.velocity.x) > max_move_speed:
 		var shake: Vector2 = Vector2(10.0, -15.0)
-		var shake_fade: float = 6.0
+		var shake_fade: float = 12.0
 		shake *= parent.velocity.x / max_move_speed
 		parent.shake_camera(shake.x * get_direction(), shake.y, shake_fade)
 

@@ -34,7 +34,7 @@ func process_frame(delta: float) -> State:
 	if get_jump() and Time.get_ticks_msec() - dash_start_time > 75:
 		# Camera shake
 		var shake: Vector2 = Vector2(20.0, -30.0)
-		var shake_fade: float = 6.0
+		var shake_fade: float = 12.0
 		var mulitplier: float = 1.2
 		if parent.velocity.x >= 1000.0:
 				shake *= mulitplier
