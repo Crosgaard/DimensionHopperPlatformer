@@ -38,7 +38,15 @@ out_of_dimension_state = NodePath("../OutOfDimension")
 follow_speed = 5.0
 range = 750.0
 
-[node name="Shoot" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("idle_state", "return_state", "target_state", "out_of_dimension_state")]
+[node name="Target2" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("idle_state", "return_state", "shoot_state", "out_of_dimension_state")]
+script = ExtResource("6_otsdi")
+idle_state = NodePath("../Idle")
+return_state = NodePath("../Return")
+shoot_state = NodePath("../Shoot")
+out_of_dimension_state = NodePath("../OutOfDimension")
+follow_speed = 5.0
+
+[node name="Shoot" type="Node" parent="StateMachine" index="4" node_paths=PackedStringArray("idle_state", "return_state", "target_state", "out_of_dimension_state")]
 script = ExtResource("7_irujs")
 idle_state = NodePath("../Idle")
 return_state = NodePath("../Return")

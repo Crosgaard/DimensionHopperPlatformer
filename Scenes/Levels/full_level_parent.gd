@@ -21,9 +21,14 @@ func _process(delta: float) -> void:
 				change_dimension(dimension_1)
 
 func change_dimension(new_dimension: LevelParent) -> void:
+	changedDimension.emit()
 	current_dimension.exit_dimension()
 	current_dimension = new_dimension
 	current_dimension.enter_dimension()
 
 func get_player() -> Player:
 	return player
+
+func _on_lower_kill_barrier_body_entered(body: CharacterBody2D) -> void:
+	if body is Player:
+		body.die()

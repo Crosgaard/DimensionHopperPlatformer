@@ -28,17 +28,16 @@ func process_physics(delta: float) -> State:
 	var movement_accel: float = get_movement_input() * accel
 
 	if movement_accel != 0:
-		print("Movement accel: " + str(movement_accel))
-		sprite.flip_h = parent.velocity.x < 0
+		
 		if get_movement_input() * (parent.velocity.x / abs(parent.velocity.x)) == -1:
 			movement_accel *= floor_friction
 		parent.velocity.x += movement_accel
 		if abs(parent.velocity.x) > max_move_speed:
 			parent.velocity.x = max_move_speed * (parent.velocity.x / abs(parent.velocity.x))
+		sprite.flip_h = parent.velocity.x < 0
 	
 	if get_movement_input() == 0.0 and parent.velocity.x != 0.0:
 		var deccel: float = parent.velocity.x / abs(parent.velocity.x) * accel * -floor_friction
-		print(deccel)
 		if parent.velocity.x > 0:
 			parent.velocity.x = max(0.0, parent.velocity.x + deccel)
 		elif parent.velocity.x < 0:
