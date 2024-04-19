@@ -27,6 +27,7 @@ idle_state = NodePath("../Idle")
 target_state = NodePath("../Target")
 shoot_state = NodePath("../Shoot")
 out_of_dimension_state = NodePath("../OutOfDimension")
+follow_speed = 5.0
 
 [node name="Target" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state", "return_state", "shoot_state", "out_of_dimension_state")]
 script = ExtResource("6_otsdi")
@@ -34,7 +35,8 @@ idle_state = NodePath("../Idle")
 return_state = NodePath("../Return")
 shoot_state = NodePath("../Shoot")
 out_of_dimension_state = NodePath("../OutOfDimension")
-follow_speed = 100.0
+follow_speed = 5.0
+range = 750.0
 
 [node name="Shoot" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("idle_state", "return_state", "target_state", "out_of_dimension_state")]
 script = ExtResource("7_irujs")
@@ -42,6 +44,7 @@ idle_state = NodePath("../Idle")
 return_state = NodePath("../Return")
 target_state = NodePath("../Target")
 out_of_dimension_state = NodePath("../OutOfDimension")
+range = 750.0
 
 [node name="ImmobileMoveComponent" type="Node" parent="." index="4"]
 script = ExtResource("4_jrugq")

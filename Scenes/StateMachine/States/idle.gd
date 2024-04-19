@@ -9,10 +9,9 @@ func enter() -> void:
 	pass
 
 func process_physics(delta: float) -> State:
-	var space_state = get_viewport().get_world_2d().direct_space_state
 	var player = parent.full_level_parent.get_player()
-	var query = PhysicsRayQueryParameters2D.create(parent.position, player.position)
-	var result = space_state.intersect_ray(query)
+	var result = parent.line_of_site_cast(parent.position, player.position)
+	
 	if result.collider == player:
 		return target_state
 	return null

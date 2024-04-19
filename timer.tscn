@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dldvalx5jlkf"]
+
+[ext_resource type="Script" path="res://timer.gd" id="1_mtlyq"]
+
+[node name="Timer" type="CanvasLayer"]
+script = ExtResource("1_mtlyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_top = 100
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "1:03:04.57"
