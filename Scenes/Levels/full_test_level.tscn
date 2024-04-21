@@ -165,7 +165,7 @@ position = Vector2(-560, 355)
 collision_layer = 1
 
 [node name="KillBarrier" parent="." index="6"]
-position = Vector2(-12000, 2.08165e-12)
+position = Vector2(-2926, 2.08165e-12)
 start_point = Vector2(-12000, 2.08165e-12)
 end_point = Vector2(-10000, 2.08165e-12)
 
