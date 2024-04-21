@@ -60,6 +60,8 @@ func die() -> void:
 	full_level_parent.reset_kill_barrier()
 	kill_barrier_started = false
 	landed = false
+	if full_level_parent.current_dimension != full_level_parent.dimension_1:
+		full_level_parent.change_dimension(full_level_parent.dimension_1)
 
 func collected() -> void:
 	print("Has collected")

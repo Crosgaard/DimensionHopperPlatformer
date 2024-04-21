@@ -5,4 +5,4 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		player = body
 		player.max_jump = 1
 		QTE.start()
-		$HBoxContainer.visible = true
+		HBox.visible = true

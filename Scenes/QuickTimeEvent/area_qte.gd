@@ -7,6 +7,8 @@ var QTE = QuickTimeEvent.new()
 var player: Player
 var has_activated: bool = false
 
+@onready var HBox: HBoxContainer = $HBoxContainer
+
 func _ready() -> void:
 	add_child(QTE)
 	
@@ -14,25 +16,25 @@ func _ready() -> void:
 	QTE.duration = duration
 	QTE.input_successful.connect(qte_successful)
 	QTE.input_failed.connect(qte_failed)
-	$HBoxContainer.visible = false
+	HBox.visible = false
 
 func _process(delta: float) -> void:
 	if QTE.active and player:
-		$HBoxContainer.position.x = player.position.x
-		$HBoxContainer.position.y = player.position.y - 100
+		HBox.position.x = player.position.x - HBox.size.x / 2 * HBox.scale.x
+		HBox.position.y = player.position.y - 200
 
 func qte_successful() -> void:
 	has_activated = true
-	$HBoxContainer.visible = false
+	HBox.visible = false
 
 func qte_failed() -> void:
 	if player:
 		player.die()
-	$HBoxContainer.visible = false
+	HBox.visible = false
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body is Player and not has_activated:
 		player = body
 		QTE.start()
-		$HBoxContainer.visible = true
+		HBox.visible = true
 
