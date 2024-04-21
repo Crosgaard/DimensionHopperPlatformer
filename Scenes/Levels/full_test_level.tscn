@@ -78,7 +78,6 @@ layer_0/tile_data = PackedInt32Array(655347, 851968, 5, 655348, 851968, 5, 65534
 [node name="Laser" parent="Dimension1/KillAreas" index="0" instance=ExtResource("7_8u6oy")]
 position = Vector2(-3274, -249)
 disable_mode = 1
-collision_layer = 32
 
 [node name="Laser2" parent="Dimension1/KillAreas" index="1" instance=ExtResource("7_8u6oy")]
 position = Vector2(-3288, 575)
@@ -185,16 +184,11 @@ position = Vector2(-3292, 142)
 
 [node name="Player" parent="." index="5"]
 position = Vector2(-602, 375)
-collision_layer = 1
 
 [node name="KillBarrier" parent="." index="6"]
 position = Vector2(-12000, 2.08165e-12)
 start_point = Vector2(-12000, 0)
 end_point = Vector2(-10000, 2.08165e-12)
-metadata/_edit_lock_ = true
-
-[node name="LowerKillBarrier" parent="." index="7"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="LowerKillBarrier" index="0"]
 position = Vector2(2964.25, 1051)

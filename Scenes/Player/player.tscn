@@ -242,7 +242,7 @@ shape = SubResource("RectangleShape2D_fw1i6")
 scale = Vector2(11, 11)
 texture = ExtResource("2_kcstr")
 hframes = 68
-frame = 17
+frame = 62
 
 [node name="AnimationPlayerD1" type="AnimationPlayer" parent="."]
 libraries = {
