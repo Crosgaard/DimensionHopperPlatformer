@@ -7,6 +7,8 @@ var max_jump: int = 1
 var current_jump: int = 0
 var has_dashed: bool = false
 var collected_counter: int = 0
+var landed: bool = false
+var kill_barrier_started: bool = false
 
 @onready var animator_d1: AnimationPlayer = $AnimationPlayerD1
 @onready var animator_d2: AnimationPlayer = $AnimationPlayerD2
@@ -32,7 +34,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-	
+	if not landed and is_on_floor():
+		landed = true
+	elif not kill_barrier_started and not is_on_floor() and landed:
+		full_level_parent.restart_kill_barrier()
+		kill_barrier_started = true
 	set_camera_position()
 
 func _process(delta: float) -> void:
@@ -51,6 +57,9 @@ func die() -> void:
 	position = start_pos
 	sprite.flip_h = false
 	set_camera_position()
+	full_level_parent.reset_kill_barrier()
+	kill_barrier_started = false
+	landed = false
 
 func collected() -> void:
 	print("Has collected")

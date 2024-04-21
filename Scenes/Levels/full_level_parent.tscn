@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dr3ljkrsv2d4r" path="res://Scenes/KillBarrier/kill_barrier.tscn" id="4_xwfd4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s7ls"]
-size = Vector2(11029, 172.5)
+size = Vector2(13198.5, 172.5)
 
 [node name="FullLevelParent" type="Node2D"]
 script = ExtResource("1_gp7kt")

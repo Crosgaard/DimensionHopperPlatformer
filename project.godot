@@ -66,7 +66,7 @@ respawn={
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Consumables"
 2d_physics/layer_6="KillBarrier"
-2d_physics/layer_7="EnemyTilemap"
+2d_physics/layer_7="QTE"
 
 [physics]
 

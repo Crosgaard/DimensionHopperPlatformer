@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8hcj205fbrdu"]
+
+[ext_resource type="Script" path="res://Scenes/QuickTimeEvent/area_qte.gd" id="1_fg24m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85o5m"]
+size = Vector2(95.5, 38)
+
+[node name="AreaQTE" type="Area2D"]
+collision_layer = 64
+script = ExtResource("1_fg24m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_85o5m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

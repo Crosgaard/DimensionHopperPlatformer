@@ -1,0 +1,206 @@
+[gd_scene load_steps=20 format=3 uid="uid://bem4e66a31eu5"]
+
+[ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_25dr3"]
+[ext_resource type="Script" path="res://Scenes/Levels/tutorial_level.gd" id="2_88urh"]
+[ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_dkyhb"]
+[ext_resource type="Script" path="res://Scenes/Background/cloud.gd" id="3_g7csv"]
+[ext_resource type="Texture2D" uid="uid://bwvlbcfck8thl" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/clouds_2.png" id="4_3kgwe"]
+[ext_resource type="Texture2D" uid="uid://d15ab0wwd7mj5" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/rocks_2.png" id="5_uf5gs"]
+[ext_resource type="Texture2D" uid="uid://cl8uhu61vp8k3" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/rocks_1.png" id="6_1kay6"]
+[ext_resource type="Texture2D" uid="uid://doyaggsf6tnt8" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/sky.png" id="7_bh6fa"]
+[ext_resource type="Texture2D" uid="uid://dayfyid0e7yqs" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/clouds_1.png" id="8_3wnws"]
+[ext_resource type="Texture2D" uid="uid://uluviou5gsfx" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/clouds_2.png" id="9_oawvq"]
+[ext_resource type="Texture2D" uid="uid://dwxi7ip0qrvru" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/rocks.png" id="10_txt3o"]
+[ext_resource type="Texture2D" uid="uid://v87w6nd6pt4q" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_3.png" id="11_8t6do"]
+[ext_resource type="Texture2D" uid="uid://cpqoeu2sthv1j" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_2.png" id="12_08tnw"]
+[ext_resource type="Texture2D" uid="uid://b8f3q0ip0226r" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_1.png" id="13_kako1"]
+[ext_resource type="PackedScene" uid="uid://c8hcj205fbrdu" path="res://Scenes/QuickTimeEvent/area_qte.tscn" id="14_syrl5"]
+[ext_resource type="Script" path="res://Scenes/QuickTimeEvent/jump_area_qte.gd" id="15_0vuk1"]
+[ext_resource type="Texture2D" uid="uid://c62hinhj7np1n" path="res://Graphics/Keys/WoodenControls - W.png" id="17_1v8br"]
+[ext_resource type="Texture2D" uid="uid://050y8rmkigy5" path="res://Graphics/Keys/WoodenControls - Space.png" id="18_6qak2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fx50"]
+size = Vector2(32, 39.5)
+
+[node name="TutorialLevel" instance=ExtResource("1_25dr3")]
+script = ExtResource("2_88urh")
+
+[node name="ParallaxBackground" parent="Dimension1/BackGround" index="0"]
+offset = Vector2(0, 300)
+transform = Transform2D(1, 0, 0, 1, 0, 300)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Dimension1/BackGround/ParallaxBackground" index="0"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension1/BackGround/ParallaxBackground/ParallaxLayer" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_dkyhb")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Dimension1/BackGround/ParallaxBackground" index="1"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(3840, 0)
+script = ExtResource("3_g7csv")
+cloud_speed = -45.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension1/BackGround/ParallaxBackground/ParallaxLayer2" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_3kgwe")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Dimension1/BackGround/ParallaxBackground" index="2"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension1/BackGround/ParallaxBackground/ParallaxLayer3" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("5_uf5gs")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Dimension1/BackGround/ParallaxBackground" index="3"]
+motion_scale = Vector2(0.4, 0.4)
+motion_offset = Vector2(0, 100)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension1/BackGround/ParallaxBackground/ParallaxLayer4" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("6_1kay6")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="TileMap" parent="Dimension1" index="1"]
+layer_0/tile_data = PackedInt32Array(655367, 917504, 5, 655368, 851968, 5, 655369, 983040, 5, 655370, 1048576, 5, 655377, 983040, 5, 655378, 917504, 5, 655379, 851968, 5, 655380, 1048576, 5, 655366, 851968, 5, 655365, 851968, 5, 458756, 65536, 1, 524292, 65536, 2, 589828, 65536, 3, 458757, 131072, 1, 524293, 131072, 2, 589829, 131072, 3, 458758, 196608, 1, 524294, 196608, 2, 589830, 196608, 3, 655364, 786432, 5, 655376, 786432, 5, 720914, 917504, 7, 786450, 917504, 7, 720903, 917504, 6, 786439, 917504, 7, 851986, 917504, 7, 917522, 917504, 7, 851975, 917504, 7, 917511, 851968, 6, 983047, 917504, 7, 1048583, 917504, 7, 983058, 917504, 6, 1048594, 917504, 7, 1114130, 917504, 7, 1114119, 917504, 7, 1179655, 917504, 7, 1245191, 917504, 7, 1179666, 917504, 7, 1245202, 917504, 7, 1310738, 917504, 7, 589844, 983040, 7, 655392, 851968, 5, 655393, 851968, 5, 655394, 917504, 5, 655395, 851968, 5, 655396, 851968, 5, 655391, 786432, 5, 655397, 1048576, 5, 720930, 917504, 7, 786466, 917504, 7, 917538, 917504, 7, 983074, 917504, 7, 1048610, 917504, 7, 1114146, 917504, 7, 1179682, 917504, 7, 1245218, 917504, 7, 1310754, 917504, 7, 852002, 917504, 7)
+
+[node name="ParallaxBackground" parent="Dimension2/BackGround" index="0"]
+offset = Vector2(0, 300)
+transform = Transform2D(1, 0, 0, 1, 0, 300)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="0"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("7_bh6fa")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="1"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(3840, 0)
+script = ExtResource("3_g7csv")
+cloud_speed = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer6" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("8_3wnws")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="2"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(3840, 0)
+script = ExtResource("3_g7csv")
+cloud_speed = 35.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer7" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("9_oawvq")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="3"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer2" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("10_txt3o")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="4"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer3" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("11_8t6do")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="5"]
+motion_scale = Vector2(0.4, 0.4)
+motion_offset = Vector2(0, 100)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer4" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("12_08tnw")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Dimension2/BackGround/ParallaxBackground" index="6"]
+motion_scale = Vector2(0.6, 0.6)
+motion_offset = Vector2(0, 100)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dimension2/BackGround/ParallaxBackground/ParallaxLayer5" index="0"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("13_kako1")
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
+[node name="TileMap" parent="Dimension2" index="1"]
+layer_0/tile_data = PackedInt32Array(1310727, 917504, 7)
+
+[node name="Player" parent="." index="5"]
+position = Vector2(406, 362)
+collision_layer = 1
+
+[node name="KillBarrier" parent="." index="6"]
+start_point = Vector2(-10000, 0)
+end_point = Vector2(-11000, 0)
+
+[node name="QuickTimeEvent" type="Node2D" parent="." index="8"]
+
+[node name="JumpAreaQTE" parent="QuickTimeEvent" index="0" instance=ExtResource("14_syrl5")]
+script = ExtResource("15_0vuk1")
+input_action = "jump"
+
+[node name="CollisionShape2D2" parent="QuickTimeEvent/JumpAreaQTE" index="0"]
+position = Vector2(521, 462)
+shape = SubResource("RectangleShape2D_0fx50")
+
+[node name="TextureRect" parent="QuickTimeEvent/JumpAreaQTE/HBoxContainer" index="0"]
+texture = ExtResource("17_1v8br")
+
+[node name="TextureRect2" parent="QuickTimeEvent/JumpAreaQTE/HBoxContainer" index="1"]
+texture = ExtResource("18_6qak2")
+
+[node name="AreaQTE" parent="QuickTimeEvent" index="1" instance=ExtResource("14_syrl5")]
+input_action = "dash"
+duration = 0.2
+
+[node name="CollisionShape2D2" parent="QuickTimeEvent/AreaQTE" index="0"]
+position = Vector2(1071.25, 421)
+
+[editable path="Dimension1"]
+[editable path="Dimension2"]
+[editable path="QuickTimeEvent/JumpAreaQTE"]
+[editable path="QuickTimeEvent/AreaQTE"]

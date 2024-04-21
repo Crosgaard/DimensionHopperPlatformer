@@ -7,6 +7,7 @@ signal changedDimension
 @onready var dimensions = [dimension_1, dimension_2]
 @onready var player: Player = $Player
 @onready var current_dimension: LevelParent = dimension_1
+@onready var kill_barrier: KillBarrier = $KillBarrier
 
 func _ready():
 	dimension_1.enter_dimension()
@@ -25,6 +26,12 @@ func change_dimension(new_dimension: LevelParent) -> void:
 	current_dimension.exit_dimension()
 	current_dimension = new_dimension
 	current_dimension.enter_dimension()
+
+func restart_kill_barrier() -> void:
+	kill_barrier.restart()
+
+func reset_kill_barrier() -> void:
+	kill_barrier.reset()
 
 func get_player() -> Player:
 	return player
