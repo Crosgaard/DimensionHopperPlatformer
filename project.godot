@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="DimensionHopperProject"
-run/main_scene="res://Scenes/Levels/full_test_level.tscn"
+run/main_scene="res://Scenes/Levels/tutorial_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TransitionLayer="*res://Scenes/TransitionLayer/transition_layer.tscn"
 
 [display]
 

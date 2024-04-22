@@ -2,6 +2,8 @@ class_name FullLevelParent extends Node2D
 
 signal changedDimension
 
+@export var next_scene: String
+
 @onready var dimension_1: LevelParent = $Dimension1
 @onready var dimension_2: LevelParent = $Dimension2
 @onready var dimensions = [dimension_1, dimension_2]
@@ -12,6 +14,8 @@ signal changedDimension
 func _ready():
 	dimension_1.enter_dimension()
 	dimension_2.exit_dimension()
+	for child in $Obtainables.get_children():
+		child.set_is_monitoring()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("dimension_shift"):
@@ -27,6 +31,11 @@ func change_dimension(new_dimension: LevelParent) -> void:
 	current_dimension = new_dimension
 	current_dimension.enter_dimension()
 
+func player_dead() -> void:
+	reset_kill_barrier()
+	for child in $Obtainables.get_children():
+		child.set_is_monitoring()
+
 func restart_kill_barrier() -> void:
 	kill_barrier.restart()
 
@@ -39,3 +48,8 @@ func get_player() -> Player:
 func _on_lower_kill_barrier_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		body.die()
+
+func _on_end_area_body_entered(body: CharacterBody2D) -> void:
+	if body is Player:
+		TransitionLayer.change_scene(next_scene)
+

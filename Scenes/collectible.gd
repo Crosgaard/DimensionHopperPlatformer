@@ -24,8 +24,13 @@ func _ready() -> void:
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		body.collected()
-		queue_free()
+		set_deferred("monitoring", false)
+		visible = false
+
+func set_is_monitoring(monitoring: bool = true) -> void:
+	set_deferred("monitoring", monitoring)
+	visible = true
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is KillBarrier:
-		queue_free()
+		visible = false

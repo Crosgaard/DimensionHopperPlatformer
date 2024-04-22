@@ -57,7 +57,7 @@ func die() -> void:
 	position = start_pos
 	sprite.flip_h = false
 	set_camera_position()
-	full_level_parent.reset_kill_barrier()
+	full_level_parent.player_dead()
 	kill_barrier_started = false
 	landed = false
 	if full_level_parent.current_dimension != full_level_parent.dimension_1:

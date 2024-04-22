@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://biw53x6xxb148"]
+[gd_scene load_steps=22 format=3 uid="uid://biw53x6xxb148"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_iv6lx"]
 [ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_iq2c5"]
@@ -18,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://8gpe282811au" path="res://Graphics/Keys/WoodenControls - Shift.png" id="16_x4gw5"]
 [ext_resource type="Texture2D" uid="uid://050y8rmkigy5" path="res://Graphics/Keys/WoodenControls - Space.png" id="17_0slqx"]
 [ext_resource type="Texture2D" uid="uid://cbsi4jjhqo748" path="res://Graphics/Keys/WoodenControls - Plus.png" id="17_e5e7j"]
+[ext_resource type="Texture2D" uid="uid://bdfg7kw4frbny" path="res://Graphics/Keys/WoodenControls - Down.png" id="19_rfueb"]
+[ext_resource type="Texture2D" uid="uid://cbdi3o5q42el1" path="res://Graphics/Keys/WoodenControls - Right.png" id="20_fgecf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngs2y"]
+resource_local_to_scene = true
 
 [node name="FirstLevel" instance=ExtResource("1_iv6lx")]
 
@@ -218,6 +223,9 @@ position = Vector2(2949, 517)
 position = Vector2(1616, -663)
 difficulty = 3
 
+[node name="CollisionShape2D" parent="SpecialTiles/EndArea" index="0"]
+shape = SubResource("RectangleShape2D_ngs2y")
+
 [node name="DashJumpHBox" type="HBoxContainer" parent="." index="5"]
 offset_left = 700.0
 offset_top = -800.0
@@ -240,8 +248,37 @@ layout_mode = 2
 texture = ExtResource("17_0slqx")
 stretch_mode = 5
 
-[node name="Player" parent="." index="6"]
-position = Vector2(2362, 541)
+[node name="ArrowDownHBox" type="HBoxContainer" parent="." index="6"]
+offset_left = 250.0
+offset_top = -650.0
+offset_right = 260.0
+offset_bottom = -610.0
+scale = Vector2(4, 4)
+
+[node name="TextureRect" type="TextureRect" parent="ArrowDownHBox" index="0"]
+layout_mode = 2
+texture = ExtResource("19_rfueb")
+stretch_mode = 5
+
+[node name="ArrowRightHBox" type="HBoxContainer" parent="." index="7"]
+offset_left = 400.0
+offset_top = -800.0
+offset_right = 487.0
+offset_bottom = -760.0
+scale = Vector2(4, 4)
+
+[node name="TextureRect" type="TextureRect" parent="ArrowRightHBox" index="0"]
+layout_mode = 2
+texture = ExtResource("20_fgecf")
+stretch_mode = 5
+
+[node name="Player" parent="." index="8"]
+position = Vector2(0, -689)
+
+[node name="KillBarrier" parent="." index="9"]
+start_point = Vector2(-2000, 0)
+end_point = Vector2(2000, 0)
+time = 30.0
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]

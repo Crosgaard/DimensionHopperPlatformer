@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bem4e66a31eu5"]
+[gd_scene load_steps=27 format=3 uid="uid://bem4e66a31eu5"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_25dr3"]
 [ext_resource type="Script" path="res://Scenes/Levels/tutorial_level.gd" id="2_88urh"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://8gpe282811au" path="res://Graphics/Keys/WoodenControls - Shift.png" id="19_nx8c3"]
 [ext_resource type="Texture2D" uid="uid://cm7nkf8lxaeoy" path="res://Graphics/Keys/WoodenControls - Enter.png" id="20_8ibe5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxabv"]
+resource_local_to_scene = true
+size = Vector2(213, 123)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fx50"]
 size = Vector2(32, 39.5)
 
@@ -42,6 +46,7 @@ size = Vector2(95.5, 21.5)
 
 [node name="TutorialLevel" instance=ExtResource("1_25dr3")]
 script = ExtResource("2_88urh")
+next_scene = "res://Scenes/Levels/first_level.tscn"
 
 [node name="ParallaxBackground" parent="Dimension1/BackGround" index="0"]
 offset = Vector2(0, 300)
@@ -191,6 +196,10 @@ region_rect = Rect2(0, 0, 5760, 1080)
 layer_0/tile_data = PackedInt32Array(852070, 1179649, 0, 852071, 1245185, 0, 786544, 1179649, 0, 852080, 1376257, 1, 721008, 655361, 11, 721006, 786433, 13, 721024, 655361, 11, 786560, 655361, 12, 786561, 720897, 12, 786562, 786433, 12, 721027, 917505, 10, 786563, 851969, 12, 917608, 524289, 12, 917615, 1310721, 3, 983151, 1310721, 3, 786543, 1310721, 1, 852079, 1310721, 2, 852098, 524289, 12)
 layer_1/tile_data = PackedInt32Array(1310727, 917504, 7, 852059, 786432, 5, 852060, 851968, 5, 852061, 851968, 5, 852062, 917504, 5, 852063, 851968, 5, 852064, 851968, 5, 852065, 1048576, 5, 852071, 851969, 5, 852072, 917505, 5, 852073, 983041, 5, 852074, 1048577, 5, 786542, 786433, 5, 786543, 917505, 5, 786544, 1048577, 5, 786560, 786433, 5, 786561, 983041, 5, 786562, 917505, 5, 786563, 851969, 5, 917598, 917504, 7, 983134, 851968, 6, 1048670, 917504, 7, 1114206, 917504, 7, 1179742, 917504, 7, 1245278, 917504, 7, 1310814, 917504, 7, 852070, 786433, 5, 917608, 917505, 7, 983144, 851969, 6, 1048680, 917505, 7, 1114216, 917505, 7, 1179752, 917505, 7, 1245288, 917505, 7, 1310824, 917505, 7, 852079, 851969, 6, 917615, 917505, 7, 983151, 917505, 7, 1048687, 917505, 7, 1114223, 917505, 7, 1179759, 917505, 7, 1245295, 917505, 7, 1310831, 917505, 7, 786564, 1048577, 5, 852098, 917505, 7, 917634, 917505, 6, 983170, 917505, 7, 1048706, 917505, 7, 1114242, 917505, 7, 1179778, 917505, 7, 1245314, 917505, 7, 1310850, 917505, 7, 721025, 983041, 7, 786538, 983041, 7)
 layer_2/tile_data = PackedInt32Array(852071, 1310721, 0, 917607, 1310721, 1, 983143, 1310721, 2, 1048679, 1310721, 3, 786544, 1376257, 0, 852080, 1376257, 1)
+
+[node name="CollisionShape2D" parent="SpecialTiles/EndArea" index="0"]
+position = Vector2(6795.5, 516.5)
+shape = SubResource("RectangleShape2D_dxabv")
 
 [node name="Player" parent="." index="5"]
 position = Vector2(-194, 380)
