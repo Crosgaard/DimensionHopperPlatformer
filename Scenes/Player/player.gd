@@ -16,6 +16,7 @@ var collected_counter: int = 0
 @onready var player_move_component = $PlayerMoveComponent
 
 @onready var camera: Camera2D = $Camera2D
+
 @onready var start_pos: Vector2 = position
 
 func _ready() -> void:
@@ -51,6 +52,8 @@ func die() -> void:
 	position = start_pos
 	sprite.flip_h = false
 	set_camera_position()
+	full_level_parent.stop_timer()
+	full_level_parent.reset_timer()
 
 func collected() -> void:
 	print("Has collected")

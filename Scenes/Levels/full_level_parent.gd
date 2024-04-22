@@ -7,6 +7,7 @@ signal changedDimension
 @onready var dimensions = [dimension_1, dimension_2]
 @onready var player: Player = $Player
 @onready var current_dimension: LevelParent = dimension_1
+@onready var timer: CanvasLayer = $Timer
 
 func _ready():
 	dimension_1.enter_dimension()
@@ -32,3 +33,12 @@ func get_player() -> Player:
 func _on_lower_kill_barrier_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		body.die()
+
+func start_timer():
+	timer.start()
+
+func stop_timer():
+	timer.stop()
+
+func reset_timer():
+	timer.reset()

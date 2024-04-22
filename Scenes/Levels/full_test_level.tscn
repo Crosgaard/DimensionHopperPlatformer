@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buseseky7u2qg"]
+[gd_scene load_steps=15 format=3 uid="uid://buseseky7u2qg"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_jmotd"]
 [ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_22s35"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://v87w6nd6pt4q" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_3.png" id="8_vpws2"]
 [ext_resource type="Texture2D" uid="uid://cpqoeu2sthv1j" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_2.png" id="9_qt8en"]
 [ext_resource type="Texture2D" uid="uid://b8f3q0ip0226r" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_1.png" id="10_hqlf7"]
+[ext_resource type="PackedScene" uid="uid://dldvalx5jlkf" path="res://Scenes/timer.tscn" id="14_e8535"]
 
 [node name="FullTestLevel" instance=ExtResource("1_jmotd")]
 
@@ -168,6 +169,8 @@ collision_layer = 1
 position = Vector2(-12000, 2.08165e-12)
 start_point = Vector2(-12000, 2.08165e-12)
 end_point = Vector2(-10000, 2.08165e-12)
+
+[node name="Timer" parent="." index="8" instance=ExtResource("14_e8535")]
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]
