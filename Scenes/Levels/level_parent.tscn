@@ -1946,6 +1946,9 @@ texture = ExtResource("3_fiuik")
 31:14/0 = 0
 31:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 31:14/0/physics_layer_0/angular_velocity = 0.0
+7:14/0 = 0
+7:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:14/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_yb5f5"]
 occlusion_layer_0/light_mask = 1
