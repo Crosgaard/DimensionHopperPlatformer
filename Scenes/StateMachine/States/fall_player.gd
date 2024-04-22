@@ -53,7 +53,9 @@ func process_physics(delta: float) -> State:
 		if jump_buffer_timer > 0:
 			if jump_buffer_timer < jump_buffer and jump_buffer_timer > (jump_buffer - bunny_hop) and get_movement_input() != 0:
 				parent.velocity.x += max_move_speed / 3 * get_direction()
-				parent.velocity.x = min(max_move_speed * 1.5, parent.velocity.x)
+				var max_multiplier: float = 2.8
+				parent.velocity.x = min(max_move_speed * max_multiplier, parent.velocity.x)
+			
 			return jump_state
 		if parent.velocity.x != 0:
 			return move_state

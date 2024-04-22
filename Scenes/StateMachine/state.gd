@@ -8,7 +8,7 @@ class_name State extends Node
 @export var jump_buffer: float = 0.075
 
 var jump_buffer_timer: float = 0.0
-var bunny_hop: float = 0.03
+var bunny_hop: float = 0.04
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var tolerance: float = 30
 

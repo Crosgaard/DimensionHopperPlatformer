@@ -11,6 +11,12 @@ func enter() -> void:
 	super()
 	set_jump()
 	parent.velocity.y = -jump_force
+	# Camera shake
+	if not parent.get_is_camera_shaking() and abs(parent.velocity.x) > max_move_speed:
+		var shake: Vector2 = Vector2(10.0, -15.0)
+		var shake_fade: float = 12.0
+		shake *= parent.velocity.x / max_move_speed
+		parent.shake_camera(shake.x * get_direction(), shake.y, shake_fade)
 
 func process_input(event: InputEvent) -> State:
 	if get_dash() and can_dash():

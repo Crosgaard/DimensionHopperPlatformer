@@ -15,8 +15,7 @@ var collected_counter: int = 0
 @onready var state_machine: Node = $StateMachine
 @onready var player_move_component = $PlayerMoveComponent
 
-@onready var camera: Camera2D = $Camera2D
-
+@onready var camera: PlayerCamera = $PlayerCamera
 @onready var start_pos: Vector2 = position
 
 func _ready() -> void:
@@ -68,3 +67,9 @@ func set_camera_position():
 		camera.position.x -= camera_offset
 	else:
 		camera.position.x += camera_offset
+
+func shake_camera(shake_strength_x: float, shake_strength_y: float, shakeFade: float, shake_dir_x: bool = true):
+	camera.apply_shake(shake_strength_x, shake_strength_y, shakeFade, shake_dir_x)
+
+func get_is_camera_shaking() -> bool:
+	return camera.camera_shaking
