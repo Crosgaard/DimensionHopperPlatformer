@@ -38,7 +38,7 @@ func save_time():
 	timer.save_time(1, "Din Far")
 
 func get_top_times():
-	print(timer.get_top_records(0, 5))
+	print(await(timer.get_top_records(0, 5)))
 
 func start_timer():
 	timer.start()

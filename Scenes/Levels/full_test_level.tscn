@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://v87w6nd6pt4q" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_3.png" id="8_vpws2"]
 [ext_resource type="Texture2D" uid="uid://cpqoeu2sthv1j" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_2.png" id="9_qt8en"]
 [ext_resource type="Texture2D" uid="uid://b8f3q0ip0226r" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_1.png" id="10_hqlf7"]
-[ext_resource type="PackedScene" uid="uid://dldvalx5jlkf" path="res://Scenes/timer.tscn" id="14_e8535"]
+[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/timer.tscn" id="14_e8535"]
 
 [node name="FullTestLevel" instance=ExtResource("1_jmotd")]
 

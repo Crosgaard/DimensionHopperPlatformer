@@ -10,7 +10,7 @@ var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
-var response: String = "":
+var response:
 	set(value):
 		response = value
 		response_received.emit()
@@ -81,7 +81,6 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	
 	var response_body = _body.get_string_from_utf8()
-	print(response_body)
 	#$TextEdit.set_text(response_body)
 	var test_json_conv = JSON.new()
 	test_json_conv.parse(response_body)
@@ -99,6 +98,10 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['command'] == "get_record":
 		if response['response']['size'] > 0:
 			response = response['response'][str(0)]["record"]
+	
+	if response['command'] == "get_records":
+		if response['response']['size'] > 0:
+			self.response = response['response']
 
 func get_record(level_id: int, username: String):
 	request_record(level_id, username)
@@ -108,7 +111,10 @@ func get_record(level_id: int, username: String):
 func get_top_records(level_id: int, amount: int):
 	request_top_records(level_id, amount)
 	await(response_received)
-	return response
+	var formatted_data = []
+	for i in range(5):
+		formatted_data.append({"player_name": response[str(i)]['player_name'], "record": response[str(i)]['record']})
+	return formatted_data
 
 func add_record(level_id: int, username: String = "", record: String = ""):
 	if username == "" or username.length() > 40:

@@ -26,7 +26,7 @@ func save_time(level_id: int, username: String) -> void:
 	db_client.add_record(level_id, username, format_time(current_time))
 
 func get_top_records(level_id: int, amount: int):
-	db_client.get_top_records(level_id, amount)
+	return await(db_client.get_top_records(level_id, amount))
 	
 
 func format_time(time: float) -> String:
