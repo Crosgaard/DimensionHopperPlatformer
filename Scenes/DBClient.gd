@@ -1,6 +1,6 @@
-extends Node2D
+class_name DBClient extends Node2D
 
-signal requested_record_set
+signal response_received
 
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "http://kwazyddu.dk/db_test.php"
@@ -10,10 +10,10 @@ var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
-var requested_record: String = "":
+var response: String = "":
 	set(value):
-		requested_record = value
-		requested_record_set.emit()
+		response = value
+		response_received.emit()
 
 func _ready():
 	randomize()
@@ -81,6 +81,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	
 	var response_body = _body.get_string_from_utf8()
+	print(response_body)
 	#$TextEdit.set_text(response_body)
 	var test_json_conv = JSON.new()
 	test_json_conv.parse(response_body)
@@ -97,12 +98,17 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['command'] == "get_record":
 		if response['response']['size'] > 0:
-			requested_record = response['response'][str(0)]["record"]
+			response = response['response'][str(0)]["record"]
 
 func get_record(level_id: int, username: String):
 	request_record(level_id, username)
-	await(requested_record_set)
-	return requested_record
+	await(response_received)
+	return response
+
+func get_top_records(level_id: int, amount: int):
+	request_top_records(level_id, amount)
+	await(response_received)
+	return response
 
 func add_record(level_id: int, username: String = "", record: String = ""):
 	if username == "" or username.length() > 40:
@@ -120,4 +126,9 @@ func add_record(level_id: int, username: String = "", record: String = ""):
 func request_record(level_id: int, username: String = ""):
 	var command = "get_record"
 	var data = {"level_id": level_id, "username": username}
+	request_queue.push_back({"command": command, "data": data})
+
+func request_top_records(level_id: int, amount: int):
+	var command = "get_records"
+	var data = {"level_id": level_id, "record_number": amount}
 	request_queue.push_back({"command": command, "data": data})

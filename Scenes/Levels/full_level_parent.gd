@@ -34,6 +34,12 @@ func _on_lower_kill_barrier_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		body.die()
 
+func save_time():
+	timer.save_time(1, "Din Far")
+
+func get_top_times():
+	print(timer.get_top_records(0, 5))
+
 func start_timer():
 	timer.start()
 

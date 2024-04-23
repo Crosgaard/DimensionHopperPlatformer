@@ -28,11 +28,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not Input.is_action_just_pressed("respawn"):
 		state_machine.process_input(event)
 	else:
+		full_level_parent.get_top_times()
 		die()
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-	
 	set_camera_position()
 
 func _process(delta: float) -> void:

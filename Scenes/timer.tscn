@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dldvalx5jlkf"]
+[gd_scene load_steps=2 format=3 uid="uid://dldvalx5jlkf"]
 
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="1_mtlyq"]
-[ext_resource type="PackedScene" uid="uid://b01jva6eyphjr" path="res://Scenes/DBClient.tscn" id="2_dka5a"]
 
 [node name="Timer" type="CanvasLayer"]
 script = ExtResource("1_mtlyq")
@@ -18,5 +17,3 @@ theme_override_constants/margin_top = 100
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "00:00.00"
-
-[node name="DBClient" parent="." instance=ExtResource("2_dka5a")]
