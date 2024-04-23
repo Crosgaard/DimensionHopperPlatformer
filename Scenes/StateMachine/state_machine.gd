@@ -1,6 +1,5 @@
 extends Node
 
-@export var player: Player
 @export var starting_state: State
 
 var current_state: State
@@ -37,7 +36,6 @@ func process_physics(delta: float) -> void:
 func process_input(event: InputEvent) -> void:
 	var new_state = current_state.process_input(event)
 	if new_state:
-		player.full_level_parent.start_timer()
 		change_state(new_state)
 
 func process_frame(delta: float) -> void:
