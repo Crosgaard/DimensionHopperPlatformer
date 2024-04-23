@@ -10,6 +10,7 @@ signal changedDimension
 @onready var player: Player = $Player
 @onready var current_dimension: LevelParent = dimension_1
 @onready var kill_barrier: KillBarrier = $KillBarrier
+@onready var timer: CanvasLayer = $Timer
 
 func _ready():
 	dimension_1.enter_dimension()
@@ -53,3 +54,17 @@ func _on_end_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		TransitionLayer.change_scene(next_scene)
 
+func save_time():
+	timer.save_time(1, "Din Far")
+
+func get_top_times():
+	print(await(timer.get_top_records(0, 5)))
+
+func start_timer():
+	timer.start()
+
+func stop_timer():
+	timer.stop()
+
+func reset_timer():
+	timer.reset()

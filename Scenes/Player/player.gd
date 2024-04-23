@@ -30,6 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not Input.is_action_just_pressed("respawn"):
 		state_machine.process_input(event)
 	else:
+		full_level_parent.get_top_times()
 		die()
 
 func _physics_process(delta: float) -> void:
@@ -62,6 +63,8 @@ func die() -> void:
 	landed = false
 	if full_level_parent.current_dimension != full_level_parent.dimension_1:
 		full_level_parent.change_dimension(full_level_parent.dimension_1)
+	full_level_parent.stop_timer()
+	full_level_parent.reset_timer()
 
 func collected() -> void:
 	print("Has collected")

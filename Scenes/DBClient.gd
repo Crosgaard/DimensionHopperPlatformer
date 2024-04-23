@@ -1,25 +1,24 @@
-extends Node2D
+class_name DBClient extends Node2D
 
-signal requested_record_set
+signal response_received
 
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "http://kwazyddu.dk/db_test.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
-const SECRET_KEY = 1234567890
+const SECRET_KEY = 5381691243
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
-var requested_record: String = "":
+var response:
 	set(value):
-		requested_record = value
-		requested_record_set.emit()
+		response = value
+		response_received.emit()
 
 func _ready():
 	randomize()
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_http_request_completed"))
-	print(await(get_record("Din Mor")))
 
 func _process(delta):
 	
@@ -98,14 +97,26 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['command'] == "get_record":
 		if response['response']['size'] > 0:
-			requested_record = response['response'][str(0)]["record"]
+			response = response['response'][str(0)]["record"]
+	
+	if response['command'] == "get_records":
+		if response['response']['size'] > 0:
+			self.response = response['response']
 
-func get_record(username: String):
-	request_record(username)
-	await(requested_record_set)
-	return requested_record
+func get_record(level_id: int, username: String):
+	request_record(level_id, username)
+	await(response_received)
+	return response
 
-func add_record(username: String = "", record: String = ""):
+func get_top_records(level_id: int, amount: int):
+	request_top_records(level_id, amount)
+	await(response_received)
+	var formatted_data = []
+	for i in range(5):
+		formatted_data.append({"player_name": response[str(i)]['player_name'], "record": response[str(i)]['record']})
+	return formatted_data
+
+func add_record(level_id: int, username: String = "", record: String = ""):
 	if username == "" or username.length() > 40:
 		print("Invalid username")
 		return
@@ -115,10 +126,15 @@ func add_record(username: String = "", record: String = ""):
 		return
 	
 	var command = "add_record"
-	var data = {"username": username, "record": record}
+	var data = {"level_id": level_id, "username": username, "record": record}
 	request_queue.push_back({"command": command, "data": data})
 
-func request_record(username: String = ""):
+func request_record(level_id: int, username: String = ""):
 	var command = "get_record"
-	var data = {"username": username}
+	var data = {"level_id": level_id, "username": username}
+	request_queue.push_back({"command": command, "data": data})
+
+func request_top_records(level_id: int, amount: int):
+	var command = "get_records"
+	var data = {"level_id": level_id, "record_number": amount}
 	request_queue.push_back({"command": command, "data": data})
