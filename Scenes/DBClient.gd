@@ -84,24 +84,26 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	#$TextEdit.set_text(response_body)
 	var test_json_conv = JSON.new()
 	test_json_conv.parse(response_body)
-	var response = test_json_conv.get_data()
+	var response_dict = test_json_conv.get_data()
 
-	if response['error'] != "none":
-		printerr("We returned error: " + response['error'])
+	if response_dict['error'] != "none":
+		printerr("We returned error: " + response_dict['error'])
 		return
 		
-	if response['command'] == "get_nonce":
-		nonce = response['response']['nonce']
-		print("Get nonce: " + response['response']['nonce'])
+	if response_dict['command'] == "get_nonce":
+		nonce = response_dict['response']['nonce']
+		print("Get nonce: " + response_dict['response']['nonce'])
 		return
 	
-	if response['command'] == "get_record":
-		if response['response']['size'] > 0:
-			response = response['response'][str(0)]["record"]
+	if response_dict['command'] == "get_record":
+		if response_dict['response']['size'] > 0:
+			response = response_dict['response'][str(0)]["record"]
+		else:
+			response = ""
 	
-	if response['command'] == "get_records":
-		if response['response']['size'] > 0:
-			self.response = response['response']
+	if response_dict['command'] == "get_records":
+		if response_dict['response']['size'] > 0:
+			self.response = response_dict['response']
 
 func get_record(level_id: int, username: String):
 	request_record(level_id, username)
@@ -112,7 +114,7 @@ func get_top_records(level_id: int, amount: int):
 	request_top_records(level_id, amount)
 	await(response_received)
 	var formatted_data = []
-	for i in range(5):
+	for i in range(response['size']):
 		formatted_data.append({"player_name": response[str(i)]['player_name'], "record": response[str(i)]['record']})
 	return formatted_data
 

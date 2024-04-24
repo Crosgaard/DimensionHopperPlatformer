@@ -26,11 +26,10 @@ func _ready() -> void:
 	full_level_parent.connect("changedDimension", changed_dimension)
 	state_machine.init(self, current_animator, sprite, player_move_component)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:	
 	if not Input.is_action_just_pressed("respawn"):
 		state_machine.process_input(event)
 	else:
-		full_level_parent.get_top_times()
 		die()
 
 func _physics_process(delta: float) -> void:

@@ -27,7 +27,9 @@ func save_time(level_id: int, username: String) -> void:
 
 func get_top_records(level_id: int, amount: int):
 	return await(db_client.get_top_records(level_id, amount))
-	
+
+func get_record(level_id: int, player_name: String):
+	return await(db_client.get_record(level_id, player_name))
 
 func format_time(time: float) -> String:
 	var minutes = floori(current_time / 1000 / 60)

@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://congi17bhotit"]
+
+[ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_wwxre"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+offset = Vector2(800, 300)
+scale = Vector2(1.75, 1.75)
+transform = Transform2D(1.75, 0, 0, 1.75, 800, 300)
+follow_viewport_scale = 0.001
+script = ExtResource("1_wwxre")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.1
+anchor_bottom = 0.226
+offset_bottom = -0.0800171
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.995
+anchor_bottom = 0.656
+offset_left = 1.0
+offset_right = 50.96
+offset_bottom = -0.0640106
+color = Color(0, 0, 0, 0.403922)
+
+[node name="Leaderboard" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.734
+offset_left = 6.0
+offset_right = 50.0
+offset_bottom = -0.0960083
+text = "dw
+dw
+dw
+dw
+dw
+
+ "
+
+[node name="Resume" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.571
+anchor_top = 0.711
+anchor_right = 0.965
+anchor_bottom = 0.863
+offset_left = 27.7966
+offset_top = 0.515991
+offset_right = 50.1486
+offset_bottom = 0.427994
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.571
+anchor_top = 0.711
+anchor_right = 0.965
+anchor_bottom = 0.863
+offset_left = -101.632
+offset_top = 0.230301
+offset_right = -79.28
+offset_bottom = 0.142303
+text = "Restart"
+
+[connection signal="pressed" from="Control/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/Restart" to="." method="_on_restart_pressed"]

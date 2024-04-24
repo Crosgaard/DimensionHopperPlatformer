@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bem4e66a31eu5"]
+[gd_scene load_steps=29 format=3 uid="uid://dogj5pmx0h5sm"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_25dr3"]
 [ext_resource type="Script" path="res://Scenes/Levels/tutorial_level.gd" id="2_88urh"]
@@ -20,10 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://050y8rmkigy5" path="res://Graphics/Keys/WoodenControls - Space.png" id="18_6qak2"]
 [ext_resource type="Texture2D" uid="uid://8gpe282811au" path="res://Graphics/Keys/WoodenControls - Shift.png" id="19_nx8c3"]
 [ext_resource type="Texture2D" uid="uid://cm7nkf8lxaeoy" path="res://Graphics/Keys/WoodenControls - Enter.png" id="20_8ibe5"]
+[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/timer.tscn" id="21_6pgtb"]
+[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/pause_menu.tscn" id="22_cfq2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxabv"]
 resource_local_to_scene = true
-size = Vector2(213, 123)
+size = Vector2(270.5, 12.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fx50"]
 size = Vector2(32, 39.5)
@@ -252,7 +254,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CollisionShape2D" parent="SpecialTiles/EndArea" index="0"]
-position = Vector2(6795.5, 516.5)
+position = Vector2(6777.75, 578.75)
 shape = SubResource("RectangleShape2D_dxabv")
 
 [node name="Player" parent="." index="5"]
@@ -320,6 +322,12 @@ shape = SubResource("RectangleShape2D_na64r")
 
 [node name="TextureRect" parent="QuickTimeEvent/DimensionAirAreaQTE2/HBoxContainer" index="0"]
 texture = ExtResource("20_8ibe5")
+
+[node name="Timer" parent="." index="9" instance=ExtResource("21_6pgtb")]
+
+[node name="PauseMenu" parent="." index="10" node_paths=PackedStringArray("parent") instance=ExtResource("22_cfq2l")]
+visible = false
+parent = NodePath("..")
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]

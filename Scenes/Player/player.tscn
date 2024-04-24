@@ -254,9 +254,10 @@ libraries = {
 "": SubResource("AnimationLibrary_0e6se")
 }
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("player", "starting_state") instance=ExtResource("3_65l6p")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("player", "starting_state", "time_start_state") instance=ExtResource("3_65l6p")]
 player = NodePath("..")
 starting_state = NodePath("Idle")
+time_start_state = NodePath("Jump")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "fall_state", "jump_state", "move_state")]
 script = ExtResource("4_luto6")
