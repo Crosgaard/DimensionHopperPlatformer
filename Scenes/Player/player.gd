@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	elif not kill_barrier_started and not is_on_floor() and landed:
 		full_level_parent.restart_kill_barrier()
 		kill_barrier_started = true
+		full_level_parent.start_timer()
 	set_camera_position()
 
 func _process(delta: float) -> void:

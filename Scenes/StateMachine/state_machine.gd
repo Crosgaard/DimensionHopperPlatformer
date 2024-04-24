@@ -1,6 +1,5 @@
 extends Node
 
-@export var player: Player
 @export var starting_state: State
 @export var time_start_state: State
 
