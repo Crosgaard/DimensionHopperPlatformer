@@ -13,8 +13,8 @@ signal changedDimension
 @onready var kill_barrier: KillBarrier = $KillBarrier
 @onready var timer: CanvasLayer = $Timer
 @onready var pause_menu: CanvasLayer = $PauseMenu
+@onready var username_menu: CanvasLayer = $PickUsername
 
-var username: String = "Idek"
 var changing_level: bool = false
 
 func _ready():
@@ -22,7 +22,14 @@ func _ready():
 	dimension_2.exit_dimension()
 	for child in $Obtainables.get_children():
 		child.set_is_monitoring()
-	pause_menu.set_leaderboard_data(await(get_top_times(level_id, 5)), username, await(get_time(level_id, username)));
+	pause_menu.setResume()
+	if Database.username == "":
+		username_menu.connect("username_update", username_update)
+	else:
+		var leaderboard = await(get_top_times(level_id, 5))
+		pause_menu.set_leaderboard_data(leaderboard, Database.username, await(get_time(level_id)));
+	
+		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -63,12 +70,18 @@ func _on_end_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		changing_level = true
 		save_time()
-		var record = await(get_time(level_id, username))
-		pause_menu.set_leaderboard_data(await(get_top_times(level_id, 5)), username, record)
+		var record = await(get_time(level_id))
+		pause_menu.set_leaderboard_data(await(get_top_times(level_id, 5)), Database.username, record)
+		pause_menu.setNextLevel()
 		pause_game()
 
 func save_time():
-	timer.save_time(level_id, username)
+	timer.save_time(level_id)
+
+func username_update(username: String) -> void:
+	Database.username = username
+	pause_menu.set_leaderboard_data(await(get_top_times(level_id, 5)), Database.username, await(get_time(level_id)));
+	username_menu.visible = false
 
 func pause_game():
 	pause_menu.game_paused()
@@ -82,10 +95,12 @@ func restart():
 	player.die()
 
 func get_top_times(level_id: int, amount: int):
-	return await(timer.get_top_records(level_id, amount))
+	var leaderboard = await(timer.get_top_records(level_id, amount))
+	print(leaderboard)
+	return leaderboard
 	
-func get_time(level_id: int, player_name: String):
-	return await(timer.get_record(level_id, player_name))
+func get_time(level_id: int):
+	return await(timer.get_record(level_id))
 
 func start_timer():
 	timer.start()

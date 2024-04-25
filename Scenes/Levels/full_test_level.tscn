@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://buseseky7u2qg"]
+[gd_scene load_steps=19 format=3 uid="uid://buseseky7u2qg"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_jmotd"]
 [ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_22s35"]
@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://v87w6nd6pt4q" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_3.png" id="8_vpws2"]
 [ext_resource type="Texture2D" uid="uid://cpqoeu2sthv1j" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_2.png" id="9_qt8en"]
 [ext_resource type="Texture2D" uid="uid://b8f3q0ip0226r" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_3/layers/ground_1.png" id="10_hqlf7"]
-[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/timer.tscn" id="14_e8535"]
-[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/pause_menu.tscn" id="16_pdpau"]
+[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/CanvasLayers/timer.tscn" id="14_e8535"]
+[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/CanvasLayers/pause_menu.tscn" id="16_pdpau"]
+[ext_resource type="PackedScene" uid="uid://cbrb8l3quw7lg" path="res://Scenes/CanvasLayers/pick_username.tscn" id="17_l4ccr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14ptr"]
 resource_local_to_scene = true
@@ -208,6 +209,8 @@ visible = false
 offset = Vector2(-5.66, 0)
 scale = Vector2(2.5, 2.5)
 transform = Transform2D(2.5, 0, 0, 2.5, -5.66, 0)
+
+[node name="PickUsername" parent="." index="10" instance=ExtResource("17_l4ccr")]
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]

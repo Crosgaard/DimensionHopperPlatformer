@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://duophfct3vyk3"]
+[gd_scene load_steps=25 format=3 uid="uid://duophfct3vyk3"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_iv6lx"]
 [ext_resource type="Texture2D" uid="uid://d1d00kl1sjd3u" path="res://Graphics/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="2_iq2c5"]
@@ -20,8 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cbsi4jjhqo748" path="res://Graphics/Keys/WoodenControls - Plus.png" id="17_e5e7j"]
 [ext_resource type="Texture2D" uid="uid://bdfg7kw4frbny" path="res://Graphics/Light/WoodenControls - Down.png" id="19_rfueb"]
 [ext_resource type="Texture2D" uid="uid://cbdi3o5q42el1" path="res://Graphics/Light/WoodenControls - Right.png" id="20_fgecf"]
-[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/timer.tscn" id="21_5sinm"]
-[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/pause_menu.tscn" id="22_70qwu"]
+[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/CanvasLayers/timer.tscn" id="21_5sinm"]
+[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/CanvasLayers/pause_menu.tscn" id="22_70qwu"]
+[ext_resource type="PackedScene" uid="uid://cbrb8l3quw7lg" path="res://Scenes/CanvasLayers/pick_username.tscn" id="23_18uh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngs2y"]
 resource_local_to_scene = true
@@ -316,6 +317,9 @@ time = 40.0
 [node name="PauseMenu" parent="." index="13" node_paths=PackedStringArray("parent") instance=ExtResource("22_70qwu")]
 visible = false
 parent = NodePath("..")
+
+[node name="PickUsername" parent="." index="14" instance=ExtResource("23_18uh2")]
+visible = false
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]

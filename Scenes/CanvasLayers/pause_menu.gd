@@ -9,9 +9,6 @@ extends CanvasLayer
 func set_leaderboard_data(data, local_player_name, local_player_time) -> void:
 	var board: String = ""
 	
-	if not data:
-		return
-	
 	for i in range(5):
 		if i >= data.size():
 			board += "\n"
@@ -25,8 +22,13 @@ func set_leaderboard_data(data, local_player_name, local_player_time) -> void:
 		board += "N/A"
 	else:
 		board += local_player_time
-	
 	leaderboard.text = board
+
+func setResume():
+	resume.text = "Resume"
+
+func setNextLevel():
+	resume.text = "Next level"
 
 func game_paused() -> void:
 	get_tree().paused = true

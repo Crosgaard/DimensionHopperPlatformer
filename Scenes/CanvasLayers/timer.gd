@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var db_client: DBClient = DBClient.new()
+var db_client: DBClient = Database
 @onready var label: Label = $MarginContainer/Label
 
 var current_time: float
@@ -21,15 +21,15 @@ func _process(delta: float) -> void:
 	
 	label.text = formatted_time
 
-func save_time(level_id: int, username: String) -> void:
+func save_time(level_id: int) -> void:
 	stop()
-	db_client.add_record(level_id, username, format_time(current_time))
+	db_client.add_record(level_id, format_time(current_time))
 
 func get_top_records(level_id: int, amount: int):
 	return await(db_client.get_top_records(level_id, amount))
 
-func get_record(level_id: int, player_name: String):
-	return await(db_client.get_record(level_id, player_name))
+func get_record(level_id: int):
+	return await(db_client.get_record(level_id))
 
 func format_time(time: float) -> String:
 	var minutes = floori(current_time / 1000 / 60)

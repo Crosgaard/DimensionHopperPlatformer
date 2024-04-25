@@ -6,6 +6,7 @@ var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "http://kwazyddu.dk/db_test.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 const SECRET_KEY = 5381691243
+var username: String
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -102,11 +103,10 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			response = ""
 	
 	if response_dict['command'] == "get_records":
-		if response_dict['response']['size'] > 0:
-			self.response = response_dict['response']
+		self.response = response_dict['response']
 
-func get_record(level_id: int, username: String):
-	request_record(level_id, username)
+func get_record(level_id: int):
+	request_record(level_id)
 	await(response_received)
 	return response
 
@@ -118,7 +118,7 @@ func get_top_records(level_id: int, amount: int):
 		formatted_data.append({"player_name": response[str(i)]['player_name'], "record": response[str(i)]['record']})
 	return formatted_data
 
-func add_record(level_id: int, username: String = "", record: String = ""):
+func add_record(level_id: int, record: String = ""):
 	if username == "" or username.length() > 40:
 		print("Invalid username")
 		return
@@ -131,7 +131,7 @@ func add_record(level_id: int, username: String = "", record: String = ""):
 	var data = {"level_id": level_id, "username": username, "record": record}
 	request_queue.push_back({"command": command, "data": data})
 
-func request_record(level_id: int, username: String = ""):
+func request_record(level_id: int):
 	var command = "get_record"
 	var data = {"level_id": level_id, "username": username}
 	request_queue.push_back({"command": command, "data": data})

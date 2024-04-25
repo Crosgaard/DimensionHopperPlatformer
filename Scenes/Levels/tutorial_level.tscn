@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dogj5pmx0h5sm"]
+[gd_scene load_steps=30 format=3 uid="uid://dogj5pmx0h5sm"]
 
 [ext_resource type="PackedScene" uid="uid://b2ga6ka57b8hf" path="res://Scenes/Levels/full_level_parent.tscn" id="1_25dr3"]
 [ext_resource type="Script" path="res://Scenes/Levels/tutorial_level.gd" id="2_88urh"]
@@ -20,8 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://050y8rmkigy5" path="res://Graphics/Keys/WoodenControls - Space.png" id="18_6qak2"]
 [ext_resource type="Texture2D" uid="uid://8gpe282811au" path="res://Graphics/Keys/WoodenControls - Shift.png" id="19_nx8c3"]
 [ext_resource type="Texture2D" uid="uid://cm7nkf8lxaeoy" path="res://Graphics/Keys/WoodenControls - Enter.png" id="20_8ibe5"]
-[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/timer.tscn" id="21_6pgtb"]
-[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/pause_menu.tscn" id="22_cfq2l"]
+[ext_resource type="PackedScene" uid="uid://c5g8cj4fqp0mf" path="res://Scenes/CanvasLayers/timer.tscn" id="21_6pgtb"]
+[ext_resource type="PackedScene" uid="uid://congi17bhotit" path="res://Scenes/CanvasLayers/pause_menu.tscn" id="22_cfq2l"]
+[ext_resource type="PackedScene" uid="uid://cbrb8l3quw7lg" path="res://Scenes/CanvasLayers/pick_username.tscn" id="23_xctnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxabv"]
 resource_local_to_scene = true
@@ -328,6 +329,8 @@ texture = ExtResource("20_8ibe5")
 [node name="PauseMenu" parent="." index="10" node_paths=PackedStringArray("parent") instance=ExtResource("22_cfq2l")]
 visible = false
 parent = NodePath("..")
+
+[node name="PickUsername" parent="." index="11" instance=ExtResource("23_xctnd")]
 
 [editable path="Dimension1"]
 [editable path="Dimension2"]
